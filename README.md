@@ -1,3 +1,3 @@
-# lolMiner-0.5x
+# lolMiner
 
 A git repository for lolMiner 0.5 release versions
