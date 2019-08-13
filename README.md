@@ -4,6 +4,10 @@ A git repository for lolMiner release versions
 
 ## Recent Changelog:
 
+### lolMiner 0.8.6
+- Added support the BEAM hard fork on block 321321 (approx Aug15th).
+- Fixed a bug with the BEAM stratum back end in case of formatted job descriptions (e.g. new Nicehash platform)
+
 ### lolMiner 0.8.4
 - Fixed a 0 sol/s issue for Zelcash
 - Reduced Zelcash memory usage to 2.9 GBytes
