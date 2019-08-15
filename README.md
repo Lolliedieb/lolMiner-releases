@@ -4,6 +4,10 @@ A git repository for lolMiner release versions
 
 ## Recent Changelog:
 
+### lolMiner 0.8.7
+- Added support for Beam Hash II on older AMD cards (R 9 200 / 300 4 & 8G cards;  R9 280(X), HD 79x0 with 3G). Note that the auto-switcher is only working with at least 4G, for the 3G cards please use --coin BEAM-II manually on fork height.
+- Fixed an issue with Genesis Network (GENX) missing in lolMiner 0.8.x
+
 ### lolMiner 0.8.6
 - Added support the BEAM hard fork on block 321321 (approx Aug15th).
 - Fixed a bug with the BEAM stratum back end in case of formatted job descriptions (e.g. new Nicehash platform)
