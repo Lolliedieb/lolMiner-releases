@@ -9,7 +9,10 @@ A git repository for lolMiner release versions
 - Added GRIN-AT31 solver for 16G AMD cards (Better performance on Radeon Vega FE, Radeon VII and Sapphire RX 570 16G) 
 - Updated GRIN-AT31 solver for 4G AMD cards (Better performance on Fiji based GPUs, Polaris 10 4G)
 - Fixed a bug causing too low pool hash on GRIN-AT31
-- Added experimental GRIN-AT31 support for AMD Navi (8G), AMD Fiji (4G) and AMD Hawaii (4G / 8G) GPUs 
+- Added experimental GRIN-AT31 support for AMD Navi (8G), ~~AMD Fiji (4G)~~ and AMD Hawaii (4G / 8G) GPUs
+
+Edit: support for Fiji was broken, A fix can be found here: 
+https://github.com/Lolliedieb/lolMiner-preview/releases/tag/0.9.1hotfix
 
 ### lolMiner 0.9
 - Significant performance improvement for GRIN-AT31 on 8G AMD cards (+22% on Polaris to 30% on Radeon VII)
