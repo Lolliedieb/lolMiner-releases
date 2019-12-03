@@ -4,6 +4,15 @@ A git repository for lolMiner release versions
 
 ## Recent Changelog:
 
+### lolMiner 0.9.2
+- Significant performance improvement of GRIN-AT31 on 8 / 16G cards (+5% on Polaris & Vega, +10 on Navi)
+- Experimental support for GRIN-AT31 and Polaris, Vega and VII using AMD ROCm drivers
+- Added range checks to GRIN-AT31 code (improves better stability) 
+- Added function to call external watchdog scripts in case a GPU fails during mining (see release notes)
+
+### Usage of Watchdog Script
+In case the miner detects no action of a GPU for at least a minute it will call the included scripts "reboot.sh" (Linux) or "reboot.bat" (Windows) and display a warning message in red. Afterwards the counters are reset. The scripts can be used to trigger a reboot of the rig or to call any other watchdog actions. The miner itself will take no further action and continue operation on the remaining cards.
+
 
 ### lolMiner 0.9.1
 - Added GRIN-AT31 solver for 16G AMD cards (Better performance on Radeon Vega FE, Radeon VII and Sapphire RX 570 16G) 
