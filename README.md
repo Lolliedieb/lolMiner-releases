@@ -4,6 +4,21 @@ A git repository for lolMiner release versions
 
 ## Recent Changelog:
 
+### lolMiner 0.9.4
+- New GRIN-AT31 performance code for Vega (+7%) and Navi (+12%). Requires amdgpu-pro 18.50 or newer or ROCm 2.10 driver
+- Experimental support for Cuckatoo-32 (use --coin GRIN-AT32) on 8G AMD cards (see further notes on releases page)
+- Windows release postponed due to incompatibilities with the new performance codes. 
+
+### lolMiner 0.9.3
+- Extended GRIN-AT31 compatibility to older drivers (18.x +) 
+- Improved GRIN-AT31 performance on ROCm (RX 470/480/570/580/Vega/VII)
+- Introduced early job cancellation for GRIN-AT31+ (improves hash on pool side, see further release notes on releases page)
+- Deeply reworked kernel scheduler
+- Fixed GRIN-AT31 kernel bugs (improving stability and fidelity)
+- Fixed Bug: Vega FE loading 8G instead of 16G GRIN-AT31 solver in Windows
+- Fixed Bug: Watchdog did not call right file in Windows
+- Added --disablewatchdog 1 parameter to disable the 0 sol/s  /  0 g/s detection
+
 ### lolMiner 0.9.2
 - Significant performance improvement of GRIN-AT31 on 8 / 16G cards (+5% on Polaris & Vega, +10 on Navi)
 - Experimental support for GRIN-AT31 and Polaris, Vega and VII using AMD ROCm drivers
