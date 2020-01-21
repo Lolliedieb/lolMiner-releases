@@ -4,6 +4,11 @@ A git repository for lolMiner release versions
 
 ## Recent Changelog:
 
+### lolMiner 0.9.6
+- Significant improvement on GRIN-C29M performance (+6-7% on 580 and Vega cards, +10% on Navi)
+- Significant improvement on GRIN-C31 and GRIN-C32 solver (~ +6% on all AMD cards)
+- Added a 16G GRIN-C32 solver (Approx 20% faster on Radeon VII, Vega FE and 570 16G)
+
 ### lolMiner 0.9.4
 - New GRIN-AT31 performance code for Vega (+7%) and Navi (+12%). Requires amdgpu-pro 18.50 or newer or ROCm 2.10 driver
 - Experimental support for Cuckatoo-32 (use --coin GRIN-AT32) on 8G AMD cards (see further notes on releases page)
