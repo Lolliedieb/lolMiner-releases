@@ -4,6 +4,15 @@ A git repository for lolMiner release versions
 
 ## Recent Changelog:
 
+### lolMiner 0.9.8
+- Improved GRIN-C29M solver, Better performance (+7-12% depending on card) and smaller memory use (fits 6G now)
+- Added support for Radeon 5500 (XT) and 5600 (XT) on all Grin algorithms 
+- Added BEAM support for Radeon 5500, 5600 and 5700 series (Needing 19.30 and newer driver)
+- Fixed driver incompatibilities with some newer driver versions (e.g. Linux 19.50) 
+- Renamed GRIN-AD29 to MWC-C29D to mine cuckarood-29
+- Added a small penalty to C32 in auto switcher - it seems the solver has not perfect fidelity and the penalty will make it switch a bit later to cover this. Will hopefully be fixed in next version
+- Removed 14 cycle fidelity from overview - new C29M solver does not output it properly.
+
 ### lolMiner 0.9.6
 - Significant improvement on GRIN-C29M performance (+6-7% on 580 and Vega cards, +10% on Navi)
 - Significant improvement on GRIN-C31 and GRIN-C32 solver (~ +6% on all AMD cards)
