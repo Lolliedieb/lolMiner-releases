@@ -4,6 +4,19 @@ A git repository for lolMiner release versions
 
 ## Recent Changelog:
 
+### lolMiner 1.12
+- Added support for ETCHash (Ethereum Classic dag size reduction planned for end November). Use --algo ETCHASH to activate it. (See note on release page).
+- Reworked Ethash codes for late epochs on Windows. See 4G_Windows_Readme.txt for configuring it.
+- Slightly improved Ethash efficiency for GCN 3 (R9 Fury, 470 - 590) & Navi cards
+- Added experimental support for Ethash on Nvidia GPUs (See note on release page)
+- Added new parameter: --4g-alloc-size <MByte> to define the memory allowed for Ethash on 4G cards. Maxing out will give more epochs of mining & better Zombie mode performance, lower values may improve compatibility. Suggested values: Linux: 4076, Windows 4008 - 4024
+- Added new parameter: --worker <Name> to set the worker in ETHPROXY stratum mode (improves pool compatibility)
+- Overall new Ethash host size back end - hopefully improving stability of mining
+- Fixed bug: Zombie mode generates defect shares in Windows
+- Fixed bug: Logs were not written when "LOG" : 1 was set in json style config file
+
+
+
 ### lolMiner 1.0
 
 - lolMiner got a restructure how to configure it and also features a 2nd, more simple config file format.
