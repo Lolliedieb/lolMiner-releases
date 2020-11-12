@@ -4,6 +4,27 @@ A git repository for lolMiner release versions
 
 ## Recent Changelog:
 
+### lolMiner 1.14
+- Added Ethash Zombie mode for 4G Nvidia GPUs. Use --4g-alloc-size to calibrate the number of MBytes the GPUs are allowed to use. 
+- Fixed a segmentation fault on Nvidia & mixed rigs when starting Ethash mining
+
+### lolMiner 1.13
+- Ethash: Reduced power draw significantly on  non-zombie mode for Rx Fury & Rx 470 - 590, slight reduction for Vega &  Navi
+- Ethash: Slightly improved performance on Vega, Navi and Nvidia GPUs. Significantly improved performance on R9 390. (1)
+- Added (Linux) Zombie mode for RX 5300XT & RX 5500 4G cards. Windows users can try it by using "--win4galloc off --4g-alloc-size 4008". (Vary the last number to find out sweet spot)
+- Added ETCHash support for Radeon HD 79x0 / R9 280 (X) & RX 5300 3G. On Linux will be good for ETCHash till epoch ~250 (about July 2022) 
+- Added caching of last 5 used light caches. This will reduce the switching time for Nicehash & ZIL dual mining significantly. 
+- Added support for extranonce subscription on  EthereumStratum/1.0.0 (Nicehash) format - this will stop the miner from frequently reconnecting to Nicehash
+- Added detection of pool not accepting worker name in <wallet.workerName> format when using ETHPROXY stratum. Miner will reconnect with worker name copied into --worker in this case. 
+- Added experimental workaround for mining epoch 385+ with RX 470 - 590 and Linux kernel 5.6.x: Note this fix will deactivate the ZIL cache ability and force the miner to create DAG a bit slower. Deactivate it with --disableLinux56fix . Other Linux kernel versions and other GPUs are unchanged.
+- Fixed bug: "conversion of data to type "b" failed" when using ETHPROXY stratum mode on some pools.
+- Fixed potential issue causing GPUs to freeze when a GPU needs to reboot, e.g. epoch change or connection loss.
+- Fixed benchmark mode for ETCHash. Use --benchmark ETCHASH --benchepoch 390 to benchmark performance post fork.
+- Fixed benchmark mode not starting up when called from json type configuration.
+
+(1)  (its still not perfect, but way better)
+
+
 ### lolMiner 1.12
 - Added support for ETCHash (Ethereum Classic dag size reduction planned for end November). Use --algo ETCHASH to activate it. (See note on release page).
 - Reworked Ethash codes for late epochs on Windows. See 4G_Windows_Readme.txt for configuring it.
