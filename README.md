@@ -4,7 +4,7 @@ A git repository for lolMiner release versions
 
 ## Supported Algorithm
 
-| Algorithm  | Fee |
+| Algorithm  | Fee % |
 | ------------- | ------------- |
 | BeamHash I | 1.0  | 
 | BeamHash II | 1.0  |
