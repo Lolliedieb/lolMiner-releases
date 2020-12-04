@@ -2,6 +2,28 @@
 
 A git repository for lolMiner release versions
 
+## Supported Algorithm
+
+| Algorithm  | Fee |
+| ------------- | ------------- |
+| BeamHash I | 1.0  | 
+| BeamHash II | 1.0  |
+| BeamHash III | 1.0  |
+| Cuckoo 29 | 2.0  |
+| CuckarooD 29 | 2.0 |
+| CuckarooM 29 | 2.0 | 
+| Cuckaroo 30 CTXC | 2.5 |
+| Cuckatoo 31 | 2.0 |
+| Cuckatoo 32 | 2.0 |
+| Cuckaroo 29-32 | 1.0 |
+| Cuckaroo 29-40 | 1.0 |
+| Equihash 144/5 | 1.0 |     
+| Equihash 192/7 | 1.0 |
+| Equihash 210/9 | 1.0 |
+| Etchash | 0.7  |
+| Ethash | 0.7 |
+| ZelHash | 1.0 |
+
 ## Recent Changelog:
 
 ### lolMiner 1.14
