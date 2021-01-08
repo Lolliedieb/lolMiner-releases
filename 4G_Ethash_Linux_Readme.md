@@ -1,11 +1,11 @@
-lolMiner 1.18 
+###lolMiner 1.18
 
-How to mine Ethash with your 4G cards.
+##How to mine Ethash with your 4G cards.
 
 There are two parameters that have an influence on your 4G mining speed using
 the so called Zombie Mode with your 4G card.
 
-Parameter 1: --4g-alloc-size 
+###Parameter 1: --4g-alloc-size 
 This parameter can either be given one value that applied for all GPUs in your
 system or it can be a comma seperated list of values. Note that all cards that
 are equipped with more then 4G memory will ignore this parameter. A value of 0
@@ -23,7 +23,7 @@ Usually values that work fine, should also be good on higher epochs, so this
 is a one time tuning effort. 
 
 
-Parameter 2: --zombie-tune
+###Parameter 2: --zombie-tune
 This parameter will allow the miner to use additional system resources to speed
 up the zombie mode on high epochs. Generally setting a value of 2 works best  
 for most systems that have connected their GPUs via PCIe gen2 x1 risers. The
