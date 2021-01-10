@@ -1,4 +1,4 @@
-### lolMiner 1.18
+# lolMiner 1.19
 
 ## How to mine Ethash with your 4G cards.
 
