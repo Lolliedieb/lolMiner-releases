@@ -26,6 +26,212 @@ A git repository for lolMiner release versions
 
 ## Recent Changelog:
 
+### lolMiner 1.25 goes CUDA!
+Added a real Cuda back-end for better Nvidia GPU support on Ethash. Features:
+- Supports Maxwell to Ampere GPU generations.
+- Two different mining kernels. Use --mode a (faster) --mode b (better energy efficiency) to select between the two. The selection can be done per card via a comma separated list. In mixed system select 'a' for skipping over the AMD cards. 
+- Both kernel modes need less energy and perform better then in 1.24a
+- Reduced internal latency for less stale shares
+- Reduced CPU load when mining with Nvidia cards
+- lolMiner works now without OpenCL driver installed
+- In case of mixed rigs AMD GPUs will use OpenCL while Nvidia cards use Cuda
+- ZIL cache feature fully supported (and stable)
+- Temperature stop & Zombie mode is currently not supported
+
+_Further Changes (over 1.24a)_
+- Added Ethash, Beam Hash III, Grin Cuckatoo 32 and Cortex kernels for RX 6700
+- The Ethash stratum interface will now try to run up to three attempts of reconnecting before switching the stratum mode
+
+_Bug fixes_
+- Fixed "Warning: index out of bounds" error when switching from ETHPROXY to ETHV1 stratum mode. This might solve problems with some pools on connection loss. 
+
+_Recommendations for Cuda backend_
+- Recommendation: When using lolMiner on Nvidia cards only use "--watchdog exit" mode and run the miner in a script that will automatically restart it on closing. 
+- For ideal efficiency fix the core clock, do not use the offset functionality. Recommended values for selected GPUs:
+
+| GPU        | Range       | 
+| ------------- |:-------------:| 
+| 2070 | 1000 - 1050 |
+| 2080 | 1110 - 1160 |
+| 3060 (1) | 1070 - 1120 |
+| 3060ti | 1300 - 1350 |
+| 3070 | 750 - 800 |
+| 3080 | 1010 - 1060 |
+
+(1) Using Windows and Nvidia Driver 470.05 Beta
+
+### lolMiner 1.24a
+lolMiner 1.22 - 1.24 are **Linux only** releases that targets improvements of the performance of the zombie mode in the Linux specific code. Therefore the yesterday released version **1.21 will remain the recent release for Windows**. Miners that do not have a card using the zombie mode can safely ignore this update - it will behave identical to 1.21.
+- Added (tunable) zombie mode kernels for R9 290(x) and  R9 295 GPUs - on a popular request.
+
+_Bug Fixes_
+- Fixed a bug, that often caused the amdgpu driver to report a VM_CONTEXT1_PROTECTION_FAULT_STATUS on startup
+- Fixed defect shares and wrong reported has hrate when started with fixed --zombie-tune parameters directly
+- Fixed a bug with Baffin (RX 450,460, 550, 560) and Tonga (R9 380(X) ) GPUs showing too high hashrate and producing invalids in 1.23 zombie mode.
+- Fixed a bug with ETC mining not starting up when more then two 4G GPUs  in 1.23.
+
+_Personal release notes_
+I received quite some requests with problems about Nvidia cards and also if I can add in zombie mode kernels for 4G Nvidias and RX 5500. I need to say I tried, but there are some hurdles that prevented it. I will do better Nvidia codes in the future, but preparing it takes time. 
+That said the Navi cards somehow to not like to zombie tuning at all, that is why they only feature the standard zombie mode. Currently I also can not recommend mixing them into rigs where RX 4xx and 5xx cards run in zombie mode, because that seems to cause stuck systems from time to time.  Mixing with 8G cards and do normal mining seems not to be an issue though. 
+
+
+### lolMiner 1.23
+lolMiner 1.22 & 1.23 are **Linux only** releases that targets improvements of the performance of the zombie mode in the Linux specific code. Therefore the yesterday released version **1.21 will remain the recent release for Windows**. Miners that do not have a card using the zombie mode can safely ignore this update - it will behave identical to 1.21.
+
+### lolMiner 1.22
+lolMiner 1.22 is a **Linux only** release that targets improvements of the performance of the zombie mode in the Linux specific code. Therefore the yesterday released version **1.21 will remain the recent release for Windows**. Miners that do not have a card using the zombie mode can safely ignore this update - it will behave identical to 1.21.
+
+- Significantly improved the performance of zombie mode on RX 400 and RX 500 GPUs in Linux, especially for low zombie tune values between 0 and 4 and rather high epochs. Performance increases by 7-11% on epoch 393 (--4g-alloc-size 4080 on a RX 580. 4G) and 15-20% on epoch 400. Re-tuning using the auto-tune is recommended. Also this version might draw a bit more power, but with approximately same total efficiency.
+
+### lolMiner 1.21
+- slightly improved the performance of Linux zombie mode on Polaris GPUs on medium tune stages (needs re-tuning from previous settings)
+- increased range of accepted zombie tune parameter for GPUs with high interconnect bandwidth
+- slightly decreased GPU load of Polaris GPUs during DAG build
+- Added more control about handling cards that are detected to be non-working any more. Use parameter **--watchdog off/exit/script** to turn off any action, exit the miner with a specific exit code or to run an external script. See detail description on the 1.21 release page
+- Nvidia cards that experienced a OpenCL driver error (e.g. "CL_OUT_OF_RESOURCES" will now also trigger the watchdog with the configured effect.
+- The **--ethstratum** parameter can now take two options separated by a ',' to give different options in case the dual or split mining mode is used.
+- The dns resolving and the connection attempt can now timeout (after 10 seconds each) and will re-try to connect afterwards. This fixes an issue when a pool went offline and the following connection attempt takes indefinitely much time. Each timeout event contributes to the counter that will trigger switching to fail-over pools.
+- New option **--apihost** (default 0.0.0.0) which controls to which host address the api binds. Use 127.0.0.1 to restrict api access to only your computer, 0.0.0.0 is equivalent to everyone can access when rig is reachable on the used apiport. IPV6 ip addresses should be supported, but is untested. 
+
+
+_Fixes_
+- Fixed a issue that might cause the rig to drop to 0 hash rate on epoch changes - including changes with activated ZIL caching
+- Fixed the pool hash rate reporting not working correctly in dual & split stratum modes
+- Fixed the dual stratum connection not picking up the correct worker name when --worker is used
+- Fixed miner not loading Ethash / Etchash kernels on Tahiti and Hawaii GPUs when using older then end 2017 drivers. 
+
+
+
+_Note on Watchdog use_
+There are different reasons why a card might crash and drop to 0 mh/s or g/s or sol/s. Often this happens when the card is slightly too much undervolted, but other problems like heat are possible. Additionally the OpenCL driver of Nvidia cards sometimes crashes with a CL_OUT_OF_RESOURCE error - this is rather a software then a hardware thing and will be fixed soon. 
+Anyways: Once a card is crashed some cards - mostly AMD cards - need a system reboot to get the faults card working again. Other cards - mostly Nvidia - just need a closing of the miner program - a few seconds wait time - and then are fine to get going again.
+Therefore the crashed card detection now allows three different options to proceed with a crashed card or driver:
+
+**--watchdog off**
+This will do nothing except for printing a message. If only a single card did crash and not the whole driver this means the other cards will continue mining.
+
+**--watchdog exit**
+This will close the miner with a exit code of 42. This can be picked up by the .sh or .bat script that did start the miner (an example is provided in mine_eth.sh and mine_eth.bat) so the miner will restart after some seconds of pause. This is recommended option for Nvidia cards.
+
+**--watchdog script** 
+With this option the miner will call an external script (default path is current working directory and there emergency.sh / .bat), which can be configured with --watchdogscript. The moment the script is called the miner itself will exit. The script needs to take care about rebooting the rig or informing the OS what to do. Since this was the default behavior in previous versions it also is the default. In case the script can not be found, an error will be printed and the miner will continue as with --watchdog off.
+
+### lolMiner 1.20
+- Significantly improved **Ethash** mining speed on **R9 390** (+6 mh/s on stock settings compared to 1.19) and **Etchash** speed on **R9 290**. 
+- Added new **split & dual mining** options. This allows more freedom or better latency and stability on ETH+ZIL dual mining as well as split mining, i.e. let some cards mine ETH while other (3 and 4G) cards mine ETC. Read instructions on usage here: 
+https://github.com/Lolliedieb/lolMiner-releases/blob/master/dual_and_split_mining.md
+- The archives for ZIL example files now contain examples how to bypass the ZIL pools. Also an example configuration for ETH / ETC card split is provided.
+
+_Bug Fixes_
+- Fixed a bug with 4G cards crash on mining ETC when trying to falsely enter zombie-tune. 
+- Fixed R9 380 cards not start mining Beam
+- Fixed "Address already in use" API bug in Linux (that incidentally got introduced in 1.19)
+
+_About the split mining_
+There are two new splitting modes. Read here for configuration: 
+https://github.com/Lolliedieb/lolMiner-releases/blob/master/dual_and_split_mining.md
+
+a) For ETH+ZIL or ETC+ZIL:  
+Usually when mining ZIL you need to mine ETH on the same pool or you need to rely on a pool proxy forwarding mechanism implemented by the pool. The first case restricts restricts your mining to a single pool while the latter might have the disadvantage of a worse ETH mining latency or pool forwarding instabilities. lolMiner 1.20 and up allow to bypass the situation by adding a second stratum connection that will pick up your ETH (or ETC) shares and bring them directly to the pool you like, while the ZIL shares will be send during the ZIL shard epochs to the ZIL pool.
+
+b) For mining an other algorithm with your 4G cards:
+Usually miners allow using only one algorithm at a time. With lolMiner 1.20 the miner starts supporting to create two connections to your favorite pools and mine two algorithms within the same miner instance. Concretely this mode was build to mine ETCHASH on some GPUS while others stay on ETH.
+
+![grafik](https://user-images.githubusercontent.com/40234439/105478542-98540580-5ca3-11eb-9347-76aa7e85b78a.png)
+
+
+### lolMiner 1.19
+- Added automatic tuning mode for --zombie-tune. This is **default on**, so just run the miner with --4g-alloc-size set only to run the zombie mode automatic tuning. At the end it will report the configuration in case you want to use the configuration again. 
+You can also exclude cards from tuning or set their value manually, e.g. --zombie-tune 2,auto,0,auto will run the automatic tuning on the 2nd and 4th GPU while using fixed number 2 for first card and 0 for the 3rd one.
+The tuning will need about 30 seconds per card in the rig to show first results. The next two phases take about 1 minute per card and followed by a approximately 1.5 minutes fine tune phase. 
+
+- Ethash stratum connection will now reconnect after three pool rejected shares in a row that did pass own CPU verify before. This solves issues with unstable proxy forwarding e.g. in some ZIL pools. Also helps to get quicker to a failover pool if configured.
+
+_Fixed bugs_
+- Miner did not start up when "DEVICES" was configured in as a vector in json file, e.g. in some ETHOS configurations. #110 
+
+
+### lolMiner 1.18a
+- Improved linux zombie mode power draw & speed Polaris GPUs (R9 380, RX Fury, RX 4x0 and RX 5x0). Depending on configuration, the zombie mode now uses 0.5 to 1W less energy and is 0.2 to 0.4 mh/s faster.
+- Added --zombie-tune <number> parameter for Polaris GPUs. This will increase the performance of zombie mode (further up on the general improvement) by an other 5-15%, depending on parameter and epoch (later epochs profit more). Default value is 0 (off), for most cards the value of 2 is optimal. If you see cards getting slower then before, set to 0 or 1. Note: you either can give one value for the whole rig or provide a comma separated list for each card individually. Cards not running zombie mode ignore the parameter.
+- The parameter --4g-alloc-size can now also be set for each card individually
+- Slight rework of Beam Hash III back end. Improves poolside hash rate by approx 0.2 to 0.3% - displayed hashrate and power consume kept equal. 
+- Added a 4G_Ethash_Linux_Readme.txt file to the Linux release, giving guidance how to configure for ideal zombie mode performance.
+See online version: https://github.com/Lolliedieb/lolMiner-releases/blob/master/4G_Ethash_Linux_Readme.md
+
+_Bug fixes_
+- Fixed: segmentation fault when the dns resolve of a pool fails #109 
+- Fixed: miner does not restart after connection loss. #108 
+- Applied potential fix for "address or port already in use" bug.
+
+_Compatibility note:_
+The new zombie-tune parameter has only been tested with amdgpu-pro 20.30 and 20.40. Other drivers might cause issues. 
+Also make sure your mining rig is configured to use PCIe-gen 2 connection to your GPUs.
+
+_Example effect of --zombie-tune parameter on the hash rate in Zombie Mode_
+Note: it may be needed to tune each card individually. Tune value of 2 works for most cards, but some do not like the mode, especially when on PCIe-gen1 riser. 
+![ztune](https://user-images.githubusercontent.com/40234439/103769382-6d6f7d80-5024-11eb-9022-c63a40651672.png)
+
+
+### lolMiner 1.17
+- Significantly reduced Ethash power draw on Navi GPUs, Slightly improved performance of 6800 (XT) / 6900
+- Added Cuckoo-29, Cuckaroo-30 CTX, Cuckatoo-31 (MWC) and Cuckatoo-32 (Grin) for RX 6800 family of GPUs
+- Reduced number of stale shares on Cortex algorithm. This will result in a minimally lower displayed hash rate, but higher pool side hash.
+- Added a basic temperature protection mechanism. See notes below for usage.
+- Added parameter **--singlethread** to work with Ethash and Equihash algorithm. This will disable the 2nd mining thread and slightly reduce performance of the involved cards. Use this option to reduce stumbles when a card does graphic output in parallel. Use **--singlethread** (equivalent to **--singlethread -1**) to enable single thread mode for all GPUs, use **--singlethread <gpu id>** to set the mode for one single card.
+- Added reading of junction temperature on AMD GPUs.
+- The API is now bound to the local host, causing less issues with firewalls.
+- Windows: use **--computemode** to automatically enable the compute mode on all detected AMD GPUs. Requires higher privileges and a driver restart, see example files.
+- lolMiner.exe Windows executable is now digitally signed.
+
+_Fixed bugs:_
+- Ethash Ethproxy stratum mode some times loosing worker name.
+- Beam Hash III not starting up in Linux on RX 5000 & RX 6000 series card on amdgpu-pro 20.45 driver.
+- Ethash & Beam not starting up on Radeon R9 380 
+- Ethash not starting up on some 6G Nvidia cards
+- Ethash mining frequently trying to start up a card if there was an error during mining. 
+- "DEVICES" parameter not working when configuring the miner from json file.
+ 
+_Known issues:_
+- ETC mining is currently not working for Nvidia GTX cards with 3G of memory. 
+- On some Linux kernels there is a memory leak in the GPU driver component that effects lolMiner quite hard when mining with Navi cards. Keep system updated. (Note that this bug also affected earlier versions of lolMiner - so if it worked fine in last version it can be expected to do so further.)
+
+_Basic temperature management / overheating protection. _
+Use **--tstop <number>** to stop any mining operation on a GPU at the given temperature. Use **--tstart <number>** to allow a restart of the card below a lower temperature. Further you can use **--tmode edge/junction/memory** to apply the scheme to edge (chip), junction (hotspot) or memory temperature. If a GPU does not have the required sensors the chip temperature will be used as a back up - if no sensors are available at all the parameters will be ignored. 
+
+Note that at the moment the miner has no fan control module and also no throttling to keep a target temperature. This may be included in a future version. Thus you should put the limit high enough so the operation system or the driver has a chance to ramp up the fan speed itself. Currently tstop is supposed to be a overheat protection to prevent hardware damage in extreme cases, e.g. broken fans.
+
+### lolMiner 1.16a
+- Fixed performance regression on Nvidia cards
+- Added support of Ethash and Beam Hash III for RX 6000 generation of GPUs
+- All supported algorithms now show the share difficulty and have best share statistics. 
+- New feature: use **--rebuild-defect _n_** to trigger a rebuild of DAG if a GPU produced _n_ defect shares on the current one. Default is 3, use 0 to deactivate this feature. 
+- New feature: Use **--workmulti _n_** to modify the amount of Ethash work a GPU does per batch. Higher values will cause less CPU load but more stale shares, lower values will give less stale shares but higher CPU load. Performance may vary for different values. Default is 128.  
+- New feature: if Ethash pool disconnects within 2 seconds from connection attempt (immediate reconnect), then the other stratum mode is tested to login.
+- New feature: AMD Vega and newer cards now display memory temperature in statistics & api (only visible if there is at least one such GPU in the rig). 
+- Default ethstratum changed from ETHV1 to ETHPROXY for better pool compatibility. 
+- Stratum pool addresses now understand "stratum+tcp://", "stratum+ssl://" and "ssl://" prefixes (turning on or of ssl / tls automatically) for better compatibility with existing configurations.   
+- Slightly reduced CPU load when mining Ethash
+- New coloring scheme with more friendly colors. For terminals that do not have rgb colors (e.g. shellinabox) use **--basecolor** to restrict to a simpler set. Use **--nocolor** to deactivate coloring completely. 
+- Fixed bug: Cards may crash when switching from ZIL cache back to normal mining.
+- Fixed bug: Wavy hashrate - especially for rigs with many AMD Navi GPUs.
+- Fixed bug: (Linux:) Watchdog not called when a GPU is stuck & extremely high CPU load on crashed GPU. (1)
+- Fixed bug: Hashrate reporting not working on some pools (e.g. sparkpool)
+- Fixed bug: Miner can crash after trying to reconnect to same pool over 5 minutes. 
+- Fixed bug: Miner crashes when mixing TLS and non-TLS pools for fail-over. 
+
+(1) Note on watchdog use: When the watchdog script is called the miner will stop working on the other cards. If this is not wished use --disablewatchdog. Please make sure the script can be executed with the current user rights / does password-less operations. 
+
+### lolMiner 1.15
+- Fixed bug: Miner causing invalid shares on 4G cards on some systems (mostly Linux)
+- Fixed bug: Miner hangs up when changing epoch when using the ZIL cache feature
+- Fixed bug: Miner sometimes produces invalid shares when a new job with different epoch arrives while the miner is currently creating the DAG file for an earlier job.
+- Fixed bug: Miner not calling the default emergency scripts when a GPU was hung up (it only worked with custom scripts)
+- Improved Ethash efficiency on Nvidia GPUs
+- ZIL cache now can be used by cards with less then 8G when enough memory is available (e.g. 6G cards or when mining e.g. ETP + ZIL)
+- General stability improvements (resolved many potential miner hangs up causes)
+- Changed color scheme in Windows for Ethash mining (new jobs are now white, accepted shares green)
+
 ### lolMiner 1.14
 - Added Ethash Zombie mode for 4G Nvidia GPUs. Use --4g-alloc-size to calibrate the number of MBytes the GPUs are allowed to use. 
 - Fixed a segmentation fault on Nvidia & mixed rigs when starting Ethash mining
