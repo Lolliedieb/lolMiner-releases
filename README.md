@@ -28,6 +28,19 @@ Helpful information in : https://github.com/Lolliedieb/lolMiner-releases/wiki
 
 ## Recent Changelog:
 
+### lolMiner 1.26
+
+- Slightly improved performance of Ethash on Pascal / Turing & Ampere GPUs (about +0.1 - 0.2 mh per card)
+- Further reduced internal latency in Ethash Cuda back end (less stale shares & CPU load)
+- Added experimental Grin-C32 kernel for Radeon 6700
+
+_Fixes_
+- Fixed a bug in Cuda back-end to crash with a segfault on Epoch change (introduced in 1.25)
+- Fixed a bug that Nvidia-GPUs did not start when Cuda Toolkit was not installed (It reported "No OpenCL devices found ..." - which was complete nonsense)
+- Fixed some (rare) potential faults in Beam stratum
+- Windows: Fixed message about Light Cache build time was missing (introduced in 1.25)
+
+
 ### lolMiner 1.25 goes CUDA!
 Added a real Cuda back-end for better Nvidia GPU support on Ethash. Features:
 - Supports Maxwell to Ampere GPU generations.
