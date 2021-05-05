@@ -28,6 +28,31 @@ Helpful information in : https://github.com/Lolliedieb/lolMiner-releases/wiki
 
 ## Recent Changelog:
 
+### lolMiner 1.27
+
+- Added verify routine for Ethash dag epochs 400 to 450. In case the miner will detect defect entries, the CPU will try to fix this. Mining will be paused until the repair is completed. Use --disable-dag-verify to disable the verify & repair mechanism routine.
+- Re-worked default Ethash kernels for Pascal GPUs - improved their performance
+- Added Ethash kernels for Fermi and Kepler GPUs. Most of them will only work for small epoch Eth forks.
+- Nvidia cards on Ethash now pause when the stratum reports no current work (e.g. when connection was lost).
+- Added a split DAG mode for Nvidia GPUs in case that the memory allocation fails on the primary kernels. This will be a bit slower, but improve compatibility, especially for 5G GPUs. Use --mode s to force it.
+- Added parameter --cclk to fix the core clock of Nvidia Turing and newer GPUs without using external tools. Use a comma separated list to give different values to cards, use * to skip over cards. Needs super user or administrator privileges to work. See a detailed description here: https://github.com/Lolliedieb/lolMiner-releases/wiki/Fix-Clock-Nvidia-for-Cuda-by-lolMiner-(English)
+- Added new dualmode zilEx. This works like --dualmode zil but with the ability to use --dualdevices to exclude GPUs from switching to ZIL. They will continue on the secondary connection and do not switch.
+- Added new dualmode eth. This will allow to point different GPUs to different pools.
+- Added parameter --statsformat to use custom format for the bigger statistic box. The expected values are either compact or default or extended or a comma separated list of values. Use --help-format to get a list with accepted entries. The list is also documented at https://github.com/Lolliedieb/lolMiner-releases/wiki/Stats-Format-(English)
+- Added reading of current core and memory clocks for AMD and Nvidia GPUs
+
+_Fixes_
+
+Fixed a stratum error, that caused the "all shares stale" bug when too many reconnect attempts in a row did fail
+Fixed a crash on Nvidia GPUs when mixing ethproxy and Nicehash stratum modes in dualmodes.
+Fixed zombie tune values not applied when using json format for configuring
+Fixed displayed names of RX 6000 generation of cards and RTX 3060 in 460.x drivers.
+
+_Deprecation notice_
+
+This will be the last release that allows to use the Zombie-Mode in Windows. This is because the current implementation will start throwing invalid shares at some point and also going too slow to be worth using it any more.
+Furthermore Cuckaroo-29 with 48 cycle length - originally planned for Italocoin - got removed because of the lack of use.
+
 ### lolMiner 1.26
 
 - Slightly improved performance of Ethash on Pascal / Turing & Ampere GPUs (about +0.1 - 0.2 mh per card)
