@@ -28,7 +28,7 @@ Helpful information in : https://github.com/Lolliedieb/lolMiner-releases/wiki
 
 ## Recent Changelog:
 
-### lolMiner 1.28
+### lolMiner 1.28a
 
 - Significantly improved / speed up DAG repair function. The miner now should produce a valid DAG also at high overclock.
 - Emergency temperature stop (--tmode, --tstart, --stop) now also working for Nvidia GPUs using CUDA.
@@ -39,6 +39,8 @@ _Fixes_
 - When one Nvidia GPU stops because of a recoverable error (e.g. not enough memory for DAG or temperature limit reached), this will no longer crash all other Nvidia GPUs.
 - The parameter --disbale-dag-verify was not working for OpenCL fired cards. Not it does.
 - Fixed overzealous reconnection on Ethash connections when not receiving new work within 30 seconds (now limit is 150 seconds). This caused problems, especially on ETC+ZIL.
+- Fixed 3G Nvidia card not starting on ETC mining
+
 
 ### lolMiner 1.27
 
