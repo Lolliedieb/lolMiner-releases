@@ -37,7 +37,7 @@ _Fixes_
 
 - Zombie mode GPUs no longer crash during DAG verify.
 - When one Nvidia GPU stops because of a recoverable error (e.g. not enough memory for DAG or temperature limit reached), this will no longer crash all other Nvidia GPUs.
-- The parameter --disbale-dag-verify was not working for OpenCL fired cards. Not it does.
+- The parameter --disable-dag-verify was not working for OpenCL fired cards. Not it does.
 - Fixed overzealous reconnection on Ethash connections when not receiving new work within 30 seconds (now limit is 150 seconds). This caused problems, especially on ETC+ZIL.
 - Fixed 3G Nvidia card not starting on ETC mining
 
