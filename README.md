@@ -28,6 +28,20 @@ Helpful information in : https://github.com/Lolliedieb/lolMiner-releases/wiki
 
 ## Recent Changelog:
 
+### lolMiner 1.29
+*This is a Linux only release*
+
+Added the **Nvidia 3060 "Unlocker" for Linux**. This new mode mode allows to mine at a speed about 3/4 of the maximum speed of this cards. Differences to popular Windows solution:
+
+ - Works with Linux
+ - Does not fully unlock card, but partially (~3/4 of max performance, +40-45% over locked card)
+ - Allows using risers
+ - Allows multiple GPUs in one system
+ - Needs Nvidia Linux driver between **455.45.01** and **460.39**, **460.39** is the recommended. Other driver versions will run at locked speed. 
+
+Read the wiki page about more information and how to install this drivers on your favorite mining OS: 
+https://github.com/Lolliedieb/lolMiner-releases/wiki/3060-Booster
+
 ### lolMiner 1.28a
 
 - Significantly improved / speed up DAG repair function. The miner now should produce a valid DAG also at high overclock.
