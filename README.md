@@ -8,6 +8,7 @@ Helpful information in : https://github.com/Lolliedieb/lolMiner-releases/wiki
 
 | Algorithm  | Fee % |
 | ------------- | ------------- |
+| Autolykos V2 | 1.5  | 
 | BeamHash I | 1.0  | 
 | BeamHash II | 1.0  |
 | BeamHash III | 1.0  |
@@ -27,6 +28,31 @@ Helpful information in : https://github.com/Lolliedieb/lolMiner-releases/wiki
 | ZelHash | 1.0 |
 
 ## Recent Changelog:
+
+### lolMiner 1.3(RG)0
+Note: Windows version will follow in a few days. Sorting out driver issues ;)
+
+- Added **Autolykos V2 mining (ERGO)** use --algo AUTOLYKOS2 to select it (a)
+- fee: 1.5%
+- Cuda solver: Supports Nvidia Maxwell (GTX 900 series) and newer GPUs with at least 3G of VRAM
+- OpenCL solver: Supports AMD GCN1 (Radeon HD 7950) and newer (b) with at least 3G of VRAM 
+- Linux: Experimental zombie mode for AMD GPUs with 2G of memory (like HD 7870, RX 550, ...) (c)
+
+_Further feature changes_
+- Improved performance of RTX 3060 semi-unlocker in Linux
+- Reduced power draw of RX 3060 semi-unlocker in Linux
+
+_Fixes:_
+- Significantly improved DAG repair process on all Nvidia GPUs. Even at high OC now the DAG should be created successfully withing a short time. 
+- Fixed a bug with 3060 semi-unlocker not unlocking after DAG rebuild
+- Fixed a bug in Ethash stratum when mining with Nicehash protocol on some pools not sticking 100% close to protocol.
+- Some minor fixes
+
+_Notes:_
+(a) General tuning tip: The dataset generation of Ergo is more core heavy then e.g. for Ethash. Please allow more core clock and accordingly voltage! The mining phase of Autolykos V2 instead is not very power hungry. So the average consumption can still expected to be rather low.  
+(b) Optimization target were AMD GCN 3 cards with 4G of memory like RX 470, 560, ...
+(c) In case the miner does not start on older cards, try to increase --keepfree slightly. 
+Personal note: I am aware many would like to mine Ergo+Zil ... this will be possible in future versions, but before I am changing some things how ZIL mining works internally - to make it more flexible to be added to other x + Zil configs :) 
 
 ### lolMiner 1.29
 *This is a Linux only release*
