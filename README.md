@@ -9,8 +9,6 @@ Helpful information in : https://github.com/Lolliedieb/lolMiner-releases/wiki
 | Algorithm  | Fee % |
 | ------------- | ------------- |
 | Autolykos V2 | 1.5  | 
-| BeamHash I | 1.0  | 
-| BeamHash II | 1.0  |
 | BeamHash III | 1.0  |
 | Cuckoo 29 | 2.0  |
 | CuckarooD 29 | 2.0 |
