@@ -29,6 +29,17 @@ Helpful information in : https://github.com/Lolliedieb/lolMiner-releases/wiki
 
 ## Recent Changelog:
 
+### lolMiner 1.31
+
+_Fixes_ (compared to 1.30)
+- Fixed a bug with Ethash Nicehash protocol reporting "conversion of data to type 'b' failed" on new jobs.
+- Linux: Slightly adjusted parameters for RTX 3060 (LHR V1) semi-unlock to be more resilient over different configurations. 
+- Windows: Re-Worked GPU detection mechanism fixing the bug that miner fails to start up on some systems without any error message. 
+
+_Known issues:_
+- Pitcairn GPUs (HD 7850, R9 270, R9 270) still need a new kernel for Ergo. This is work in progress. 
+
+
 ### lolMiner 1.3(RG)0
 Note: Windows version will follow in a few days. Sorting out driver issues ;)
 
