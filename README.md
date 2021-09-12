@@ -27,6 +27,28 @@ Helpful information in : https://github.com/Lolliedieb/lolMiner-releases/wiki
 
 ## Recent Changelog:
 
+### lolMiner 1.32
+- **Beta Feature:** Added RTX 3000 series semi-unlock for LHR v2 cards giving up to 30% more performance then in locked state. Use --mode LHR2 to call it (and --mode LHR1 for 3060 LHR1 cards). Also added a low power LHR mode for V2 cards (--mode LHRLP). See below for more details. **Recommended drivers** for LHR2 and LHRLP: **470.63.01 or 465.31** - others could be more unstable. Most tests were done in Linux.  Use **--lhrtune** to improve either performance or stability. Read the guide for configuring here:  https://github.com/Lolliedieb/lolMiner-releases/wiki/Nvidia-Mode-Switch-&-LHR-Semi-Unlock  (2)
+- Improved performance of RTX 3060 LHR v1 semi-unlock by 2-3% depending on configuration - at same low consumption!
+- Added detection of the "fan glitch" for RTX 3000 LHR cards. When the glitch is detected, the GPUs will leave the special LHR modes automatically.
+- Significantly improved Ergo performance on GCN Gen 1 GPUs (e.g. HD 7970, R9 280, R7 370)
+- Added Ergo kernels for Pitcairn GPUs.
+- New **configuration scheme** for Et(c)hash + Zil dual mining with dual stratum! See documentation here: https://github.com/Lolliedieb/lolMiner-releases/wiki/Dual-Mining-from-1.32. When using json configuration style use "DPOOLS" with same format as "POOLS" currently.
+- When a pool requests a re-connection, the miner will now do so immediately instead of waiting 1 second and no longer say the connection got "lost". 
+- Added support for extra nonce subscription on Ergo stratum - this will cause less reconnects on Nicehash
+
+_Fixes_
+- Fixed an issue causing "invalid" shares on Ethash when the pool makes intensive use of variable difficulty (e.g. HiveOn, Nicehash...) (1)
+- Fixed an issue that might cause the epoch to update too late when doing Eth + Zil dual stratum
+- Fixed an issue causing too much stale or very late shares in Ergo
+- Fixed partially defect .bat example files
+- Updated complete network stack to newer libraries - for more stability.
+- A lot of internal re-structuring and fixes.
+
+(1) Thanks to my Spanish mining community for letting me know and the help to track down this issue. 
+(2) Feel free to discuss good tuning values in the discussion section of this release page.
+
+
 ### lolMiner 1.31
 
 _Fixes_ (compared to 1.30)
