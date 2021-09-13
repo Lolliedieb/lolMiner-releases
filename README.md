@@ -27,7 +27,7 @@ Helpful information in : https://github.com/Lolliedieb/lolMiner-releases/wiki
 
 ## Recent Changelog:
 
-### lolMiner 1.32
+### lolMiner 1.32a
 - **Beta Feature:** Added RTX 3000 series semi-unlock for LHR v2 cards giving up to 30% more performance then in locked state. Use --mode LHR2 to call it (and --mode LHR1 for 3060 LHR1 cards). Also added a low power LHR mode for V2 cards (--mode LHRLP). See below for more details. **Recommended drivers** for LHR2 and LHRLP: **470.63.01 or 465.31** - others could be more unstable. Most tests were done in Linux.  Use **--lhrtune** to improve either performance or stability. Read the guide for configuring here:  https://github.com/Lolliedieb/lolMiner-releases/wiki/Nvidia-Mode-Switch-&-LHR-Semi-Unlock  (2)
 - Improved performance of RTX 3060 LHR v1 semi-unlock by 2-3% depending on configuration - at same low consumption!
 - Added detection of the "fan glitch" for RTX 3000 LHR cards. When the glitch is detected, the GPUs will leave the special LHR modes automatically.
@@ -44,6 +44,8 @@ _Fixes_
 - Fixed partially defect .bat example files
 - Updated complete network stack to newer libraries - for more stability.
 - A lot of internal re-structuring and fixes.
+- 1.32a: Fixed --mode LHR1 not starting in unlocked state on many systems.
+- 1.32a: Fixed 3060 LHR V1 not starting in semi-unlock when the right drivers are detected.
 
 (1) Thanks to my Spanish mining community for letting me know and the help to track down this issue. 
 (2) Feel free to discuss good tuning values in the discussion section of this release page.
