@@ -1,10 +1,10 @@
-# lolMiner 1.19
+# lolMiner 1.2
 
-## How to mine Ethash with your 4G cards.
+## How to mine Ethash with your G cards.
 
 There are two parameters that have an influence on your 4G mining speed using the so called Zombie Mode with your 4G card.
 
-### Parameter 1: --4g-alloc-size 
+### Parameter 1: --g-alloc-size 
 This parameter can either be given one value that applied for all GPUs in your system or it can be a comma seperated list of values. Note that all cards that are equipped with more then 4G memory will ignore this parameter. A value of 0 is just the lolMiner default. When providing a list of card individual values do not skip those cards that have more then 4G of memory (just set them to 0).
 
 The higher this parameter is choosen the more memory for a partial dag lolMiner is allowed to use. Thus the speed on your 4G cards will increase significantly. 
