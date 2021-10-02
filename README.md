@@ -27,6 +27,26 @@ Helpful information in : https://github.com/Lolliedieb/lolMiner-releases/wiki
 
 ## Recent Changelog:
 
+###  lolMiner 1.33
+
+**Core Feature: Complete rework of LHR semi-unlock feature**
+- Better performance of LHR semi-unlock, about 70%+ on GDDR6x cards (3070 Ti & 3080 (Ti) ), about 71-72%+ on GDDR6 (3060 (Ti) & 3070), 81%+ on 3060 LHR V1 with the right drivers (earlier then 460.39). Recommended driver for LHR v2: 470.74 (Linux), 472.12 (Windows)
+**Important hint:** We saw some calibration bugs with 460.93 driver (Linux). **Please do not use it!**
+- Less performance difference between low and high core clock then earlier versions
+- Cards are automatically detected if they are LHR - **no more --mode switch required** 
+- In the beginning the miner will calibrate to your exact core & memory clocks. The total process takes 3-4 minutes total, one with rather low speed and the remaining time with speed closer to the final value. **Try not to change any overclock after or during calibration**, else the performance might be lower then expected!
+- **--lhrtune** has now default value of **auto** for an automatic tuning. Results of automatic tuning will be displayed in stats after calibration is completed. Note: **re-tuning of values used in 1.32a is required!**
+
+_Other feature changes_
+- Default --shortstats interval lowered to 15 seconds, default --longstats interval lowered to 60 seconds
+- More stable displayed hashrate on Nvidia cards when mining Eth
+- Changes in Api: On supported algorithms the miner now exposes the number of stale shares in API (stales and defect shares are no longer collapsed into one value)
+
+_Fixes:_
+- Fixed a bug with processing old style --dualmode etc dualmine settings
+- Fixed some minor bugs of the API
+- Fixed a bug causing a non-realistic high hash rate to be displayed on LHR cards when overclocked after start
+
 ### lolMiner 1.32a
 - **Beta Feature:** Added RTX 3000 series semi-unlock for LHR v2 cards giving up to 30% more performance then in locked state. Use --mode LHR2 to call it (and --mode LHR1 for 3060 LHR1 cards). Also added a low power LHR mode for V2 cards (--mode LHRLP). See below for more details. **Recommended drivers** for LHR2 and LHRLP: **470.63.01 or 465.31** - others could be more unstable. Most tests were done in Linux.  Use **--lhrtune** to improve either performance or stability. Read the guide for configuring here:  https://github.com/Lolliedieb/lolMiner-releases/wiki/Nvidia-Mode-Switch-&-LHR-Semi-Unlock  (2)
 - Improved performance of RTX 3060 LHR v1 semi-unlock by 2-3% depending on configuration - at same low consumption!
