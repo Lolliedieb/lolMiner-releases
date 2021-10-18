@@ -27,6 +27,28 @@ Helpful information in : https://github.com/Lolliedieb/lolMiner-releases/wiki
 
 ## Recent Changelog:
 
+### lolMiner 1.34
+
+**Rework of LHR semi-unlocker (again)**
+- Improved performance of RTX 3060 and RTX 3060 Ti by up to 2%, generally allowing a bit less core clock
+- Auto tuning will now be quicker to reasonable hashrates
+- Improved stability on found parameters
+- Found parameters that are hard coded with **--lhrtune** are now applied within 30 seconds after dag build
+- **--lhrtune** now understands the parameter "off" to disable any kind of LHR handling - this is useful for cards that sometimes trigger the lhr detection although they are non-LHR.
+- Improved compatibility with many current drivers. Still on Linux we recommend 470.74 and on Windows 472.12 for LHR v2 cards. The 460 series drivers might perform up to 0.5% worse. For 3060 LHR V1 use either 460.39 or earlier driver (Linux) or the full unlock with 470.05 Beta in Windows. 
+
+_Feature updates_
+- The parameter **--workmulti** now has effect on Nvidia GPUs on Ethash. Default value is 192, lower values will improve stale count, higher values will reduce CPU load (and can be a tiny bit quicker, although only very tiny).
+- Added support of RTX A6000 / RTX A5000 /  RTX A4000 (and future RTX A2000) Nvidia workstation GPUs
+- Reduced RAM usage of Nvidia Ethash solver (some 10+ card rigs got issues with 1.33 when they only had 4G of memory)
+- **--statsformat** now understands the string "lhrinfo" to print the --lhrtune parameter and the lock count in custom set up statistics. 
+
+_Fixes_
+- Fixed a bug with **--tstop** or a lost stratum connection triggering a LHR GPU to lock
+- Fixed a bug that RTX 3070Ti only triggered the lock detector on rather low memory clock. 
+- Fixed a bug with invalid shares in Pitcairn Ergo Zombie mode
+- Improved stability of Ethash stratum and statistics module - fixed minor issues that might rarely cause a miner crash in them.
+
 ###  lolMiner 1.33
 
 **Core Feature: Complete rework of LHR semi-unlock feature**
