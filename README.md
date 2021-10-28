@@ -27,6 +27,14 @@ Helpful information in : https://github.com/Lolliedieb/lolMiner-releases/wiki
 
 ## Recent Changelog:
 
+### lolMiner 1.34a
+
+_Fixes_
+- Added further epochs to the dag correction detection / table. This can resolve issues with defect shares that appeared in 1.34 or earlier with start of epoch 450.
+- Slightly changes internal LHR parameters of 3070 ti & 3080 - we hope to improve stability by this plus a small speedup.
+
+Note: this is a Linux only release and also of rather temporary character. The added epochs will minimum last until the 1.35 release. After that an update should be made.
+
 ### lolMiner 1.34
 
 **Rework of LHR semi-unlocker (again)**
