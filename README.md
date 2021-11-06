@@ -27,6 +27,25 @@ Helpful information in : https://github.com/Lolliedieb/lolMiner-releases/wiki
 
 ## Recent Changelog:
 
+
+### lolMiner 1.35
+
+_Feature changes_
+
+- Ergo: Adjusted all codes mining Autolykos v2 to be ready for the epoch 1 and higher, starting Sunday Nov 7th ~8 am UTC. To continue mining Ergo, please update to this version. (1)
+- Ergo: Added ability for all AMD cards to pre-build the next Ergo data set while mining. This is at a cost of slightly slower mining directly after a height change, but generally improves poolside performance. In case you find it unstable the pre-building can be deactivated by using parameter --ergo-prebuild -1 / 0 / 1. Here -1 stands for the cards default, 0 is off, 1 is on. Default is on for all AMD GPUs except GCN1 and Vega generations - those were more stable with the option turned off. The value can be set per card by using a comma separated list of values.
+- Ergo: Improved performance of AMD Hawaii generation of chips by about 2%.
+- Ethash: Added error correcting tables to check the DAG integrity up to epoch 499 (Early June 2022)
+- Ethash: Added option to use the version 1.33 semi-unlocker style - this was more performant for some GDDR6X cards. Use --lhrtune xauto to activate the 1.33 solver style auto tuning and use --lhrtune x to set a predetermined tune value. The 1.33 style solver can be mixed with 1.34+ style solvers by using a comma separated list of values.
+
+_Bug fixes_
+- Ethash: Fixed a bug some crashed Nvidia cards did not trigger the watchdog
+- Ethash: Fixed a bug causing the worker name not to be correctly passed to the pool in some cases in 1.34(a)
+
+
+(1) The new Ergo epochs will increase the size of the data set used for mining by 5% every ~75 days. Some cards might need a bit more core clock to achieve the used performance. Also 2G cards in zombie mode will see a significant reduction in speed, because the data set is more then 2150 MBytes in size now. 
+
+
 ### lolMiner 1.34a
 
 _Fixes_
