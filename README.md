@@ -27,6 +27,18 @@ Helpful information in : https://github.com/Lolliedieb/lolMiner-releases/wiki
 
 ## Recent Changelog:
 
+### lolMiner 1.36
+
+_Feature updates_
+- Improved Ethash & Etchash performance on all Nvidia Turing & Ampere GPUs by **0.3 to 0.7%** depending on card & system.
+- Decreased rate of stales on Nvidia Turing & Ampere GPUs.
+- Modified LHR auto tuning to use finer steps (0.2 instead of 1). Also when the miner is more then 2 hours stable on its current settings and a lock appears, the card will unlock again, but the tuning will not be reduced. 
+- New parameter: **--lhrwait n** will set the miner to wait n seconds, until the LHR detection and calibration gets active. Allows to wait for systems with delayed memory overclock settings.
+
+_Fixes_
+- Fixed a potential crash between switching between cached Eth and Zil dag on Nvidia cards
+- Fixed a bug: Worker name got lost on ezil.me mining pool (since 1.34)  
+- Fixed a bug causing rare defect shares on LHR cards
 
 ### lolMiner 1.35
 
