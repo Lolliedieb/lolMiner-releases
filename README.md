@@ -39,6 +39,8 @@ _Fixes_
 - Fixed a potential crash between switching between cached Eth and Zil dag on Nvidia cards
 - Fixed a bug: Worker name got lost on ezil.me mining pool (since 1.34)  
 - Fixed a bug causing rare defect shares on LHR cards
+- 1.36a: Fixed a bug causing no LHR unlock to normal speed after epoch change
+- 1.36a: Reverted some LHR kernels to a specification more similar to what was in 1.35. These are default in Windows and on RTX 3080 on Linux, other cards can request this kernels by using --lhrtune wauto or wTuneNumber in case the default is unstable.
 
 ### lolMiner 1.35
 
