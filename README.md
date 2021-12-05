@@ -121,6 +121,39 @@ Parameter | Description
 
 
 ## Recent Changelog:
+  
+### lolMiner 1.38
+_Changes_
+- Added DNS over HTTPS name resolving for establishing your pool connection. This has advantages when your normal DNS resolving might be blocked or modified by a firewall. You can control its behavior with the parameter **--dns-over-https value** with the values 0: turns DNS over HTTPS off; 1: DNS over HTTPS is enabled, fallback to normal DNS resolving is possible (default); 2: enforcing DNS over HTTPS, normal DNS is completely disables  (1)
+- Updated internal libraries for TLS connection handling
+- Moved more fee pools to use TLS connection. When mining Ethash, Etchash (both +ZIL), Ergo and Beam the fee connection is now always encrypted (TLS 1.2) and mining data packages can not be identified as such.  
+- Changed LHR kernel defaults for RTX 3060 and RTX 3070, because the default ones had an issue with defect shares at high oc.  
+
+(1) A big kudos to Flexpool for helping out with this
+ 
+  ### lolMiner 1.37
+  
+  _Feature Changes_
+
+- Improved Ethash performance on Turing based graphic cards (GTX 16 series, RTX 20 series, lower tier CMP cards) by about 0.4 to 0.7%.
+- Improvement of Ethash performance (up to 1%) and reduction of stale share rate for Maxwell and Pascal (GTX 10) based GPUs.
+- Changes LHR tuning algorithm to minimize the number of locks & time for finding a stable value: The tuning might be improved by the miner later once stable for long enough time.
+- Improved LHR performance for 3060 V1 (GA106-300-A1) on older drivers (460.39 and earlier)
+- Added Ergo kernels for RX 6700XT and RX 6600 (XT) on newer AMD drivers.
+- Ethereum stratum code will now print the pool difficulty in better human readable number
+- The miner will now print the ip of the connected pool - to be able to detect e.g. faulty DNS entries
+- Added parameters --dualtls and --dualworker to toggle TLS and the worker name for the dual connection. To be used as with the parameters for the standard connection. 
+- **--statsformat** can now distinguish between the number of LHR locks "lhrlks" and the current --lhrtune parameter "lhrparam" 
+- Added a parameter **--vstats <number>** to modify the terminal width in number of characters to overwrite the automatic detection, which sometimes does not work with some terminal emulators like putty.
+- Added a parameter **--hstats <optional number>**. Given this parameter will switch the statistics to a way such that the statistics write a horizontal line per GPU instead of the default vertical (see screenshot below). When the automatic read terminal width is reached, the remaining entries will be printed to a 2nd set of lines. The vertical statistics can be combined with the usual --statsformat patterns to customize the displayed values per card. The optional number overwrites the the automatic screen width detection. To fit all values of **--statsformat extended** into one line we need **--hstats 150** or higher (recommended setting this value manually when accessing the rig via terminal emulator).
+
+
+_Fixes_
+- Fixed 3060 V1 (GA106-300-A1) internal parameters for drivers 460.39 and below, stabilizing the hash rate (they pretty much did not work stably unlocked in 1.36)
+- Fixed a bug causing a wavy hash-rate report in some FHR rigs
+- Fixed a bug causing **--mode a** kernels to be defect for Ampere and Turing GPUs in 1.36(a) releases
+- Fixed a bug causing a segmentation fault when trying to mine EXCC.
+
 
 ### lolMiner 1.36
 
