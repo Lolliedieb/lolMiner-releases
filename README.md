@@ -25,6 +25,101 @@ Helpful information in : https://github.com/Lolliedieb/lolMiner-releases/wiki
 | Ethash | 0.7 |
 | ZelHash | 1.0 |
 
+
+## Options supported by lolMiner
+To see some basic configuration examples, see here: https://github.com/Lolliedieb/lolMiner-releases/wiki/lolMiner-1.38---Basic-usage-(English)
+
+### General Options
+
+Parameter | Description
+| ------------- | ------------- |
+|  -h [ --help ]                     |    Help screen |
+|  --config arg (=./lolMiner.cfg)    |    Config file |
+|  --json arg (=./user_config.json)  |    Config file in Json format |
+|  --profile arg                     |    Profile to load from Json file |
+|  --nocolor [=arg(=on)] (=off)      |    Disable colors in output |
+|  --basecolor [=arg(=on)] (=off)    |    Use 16 colors scheme for non-rgb terminals |
+|  --list-coins                      |    List all supported coin profiles |
+|  --list-algos                      |    List all supported algorithms |
+|  --list-devices                    |    List all supported & detected GPUs in your system |
+|  -v [ --version ]                  |    Print lolMiner version number |
+
+### Mining Options
+| Parameter | Description |
+| ------------- | ------------- |
+|  -a [ --algo ] arg           |          The algorithm to mine.  |
+|  -p [ --pool ] arg           |          Mining pool to mine on <br/> Format: <pool>:<port> |
+|  -u [ --user ] arg           |          Wallet or pool user account to mine on |
+|  --pass arg                  |          Pool user account password (Optional) |
+|  --tls arg                   |          Toggle TLS ("on" / "off") |
+|  --dns-over-https arg (=1)   |          Toggle dns over https. <br />0=default dns only <br />1=DoH with default dns as backup (default) <br />2=DNS over https enforced |
+|  --devices arg                |         The devices to mine on <br /> Values: ALL / AMD / NVIDIA or a comma separated list of incidences.|
+|  --devicesbypcie [=arg(=on)] (=off) |   Interpret --devices as list of PCIE BUS:SLOT pair|
+|  --pers arg                   |         The personalization string. Required when using --algo for Equihash algorithms|
+|  --keepfree arg (=5)          |         Set the number of MBytes of GPU memory that should be left free by the miner.|
+|  --benchmark arg              |         The algorithm to benchmark|
+|  -c [ --coin ] arg           |          The coin to mine - this is an alternative to --algo that sets both, the algorithm and the personalization string for Equihash coins. |
+
+### Statistics Options:
+Parameter | Description
+| ------------- | ------------- |
+|  --apiport arg (=0)                |    The port the API will use |
+|  --apihost arg (=0.0.0.0)          |    The host binding the API will use |
+|  --longstats arg (=60)             |    Long statistics interval |
+|  --shortstats arg (=15)            |    Short statistics interval |
+|  --statsformat arg (=default)       |   Format for long statistics. Use --help-format to get an overview of available fields. |
+|  --hstats [=arg(=0)] (=-1)         |    Select stats to be drawn in a horizontal manner for each GPU. The number overwrites the terminal width detection. |
+|  --vstats [=arg(=0)] (=0)          |   Select stats to be drawn in a vertical  manner for each GPU (default). The number overwrites the terminal width detection. |
+|  --help-format [=arg(=1)]           |   Format description for --statsformat |
+|  --digits arg                       |   Number of digits in hash speed after delimiter |
+| --timeprint [=arg(=on)] (=off)      |  Enables time stamp on short statistics ("on" / "off") |
+| --compactaccept [=arg(=on)] (=off)  |  Enables compact accept notification |
+|  --log [=arg(=on)]                  |   Enables printing a log file ("on" / "off") |
+|  --logfile arg                      |   Path to a custom log file location |
+
+### Ethash Specific Options:
+Parameter | Description
+| ------------- | ------------- |
+|  --ethstratum arg (=ETHPROXY)  |        Ethash stratum mode. Available options: <br \> ETHV1: EthereumStratum/1.0.0 (Nicehash) <br \> ETHPROXY: Ethereum Proxy |
+|  --worker arg (=eth1.0)        |        Separate worker name for Ethereum Proxy stratum mode. |
+|  --mode arg (=b)              |         Kernel mode to mine on. Comma separated values for configuring multiple cards differently. |
+|  --lhrtune arg (=auto)         |        Offset to most important LHR parameters. If your card is unstable or does not unlock try negative values. Range is +/-40. |
+|  --lhrwait arg (=0)            |        Time in seconds to wait after startup before any LHR detection or calibration takes place. |
+| --disable-dag-verify [=arg(=1)] (=0) |  Disable the CPU side verification and repair of DAG. |
+|  --dagdelay [=arg(=0)] (=-1)     |      Delay between creating the DAG buffers for the GPUs. Negative values enable parallel generation (default). |
+|  --enablezilcache [=arg(=1)] (=0) |     Allows 8G+ GPUs to store the DAG for mining Zilliqa. It will generated only once and offers a faster switching. |
+|  --benchepoch arg (=440)       |        The DAG epoch the denchmark mode will use |
+
+### Algorithm Split Options & Dual Mining Options:
+Parameter | Description
+| ------------- | ------------- |
+|  --dualmode arg (=none)    |            Dual mode used. Allowed options: none, zil, zilEx, eth, etc |
+|  --dualpool arg             |           Pool configuration for extra connection, Format <pool>:<port> |
+|  --dualuser arg             |           Username or wallet address for the extra connection |
+|  --dualpass arg              |          Password for the extra connection (Optional) |
+|  --dualworker arg (=eth1.0)  |          Separate worker name for the 2nd connection. |
+|  --dualtls arg               |          Toggle TLS ("on" / "off") for the 2nd connection. |
+|  --dualdevices arg          |           Split rule for etc and beam split mode. Use a comma separated list of indexes or "4G" (default). |
+
+### Managing Options:
+Parameter | Description
+| ------------- | ------------- |
+|  --watchdog arg (=script)     |         Specify which action to take when a card is detected to be crashed. <br /> "off": Continue working on remaining cards. No action.  <br />"exit": Exit the miner with exit code 42 to ask for a restart. Recommended for Nvidia cards. <br /> "script": Call an external script. Default and recommended for AMD cards.  |
+|  --watchdogscript arg      |            Specify which script to be executed when a hung GPU is detected |
+|  --singlethread [=arg(=-1)] (=-2) |     Enable single mining thread mode for all GPUs (-1) or for a specific GPU id. |
+|  --tstart arg (=0)           |          Minimal temperature for a GPU to start in degree C. If set to 0 disables restart below a fixed temperature. |
+|  --tstop arg (=0)            |          Temperature to pause or stop a GPU from mining in degree C. If set to 0 disables stop above a fixed temperature. |
+|  --tmode arg (=edge)         |          Mode for temperature management. Use "edge" (default), "junction" or "memory" to set the mode for temperature management. |
+|  --ergo-prebuild arg (=-1)     |        Disable (0) or Enable (1) the function of pre-building the dataset for Ergo. -1 refers to the card default. |
+
+### Overclock Options:
+Parameter | Description
+| ------------- | ------------- |
+|  --cclk arg (=*)  | The core clock used for the GPUs. Cards are separated with a comma. "*" can be used to skip a card. |
+                                        
+
+
+
 ## Recent Changelog:
 
 ### lolMiner 1.36
