@@ -124,7 +124,7 @@ Parameter | Description
 _Changes_
 - Added Ethash + Alephium dual mining mode analogous to existing Ethash + Ton mode. Use --dualmode ALEPHDUAL to use it. Supported GPUs: Nvidia Turing & Ampere generation, AMD Polaris (RX 400, 500), Navi and Big Navi generations.
 - Stratum connections will now have an increasing timeout (steps of 5 seconds) when reconnecting plus a small random time of 1 second in order to not overload the target pool in case of recovering from a network outtake. 
-- lolMiner API now has new page /gui, which allows you to watch your rig mining in a web browser. Navigate to http://<ip of your rig>:<apiport>/gui in your brower doing so. 
+- lolMiner API now has new page /gui, which allows you to watch your rig mining in a web browser. Navigate to `http://<ip of your rig>:<apiport>/gui` in your brower doing so. 
 - Added experimental (at the moment a bit slow) Ethash kernels for new AMD BC-250 APUs
 - In dual mining the algorithm that mined a share will now be shown in command line output
 - --ton-mode 6 stratum mode will now obey the prefix send to it on the first bytes of the nonce (request from other pools that want to use this scheme)
