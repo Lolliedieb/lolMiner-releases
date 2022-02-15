@@ -117,10 +117,50 @@ Parameter | Description
 | ------------- | ------------- |
 |  --cclk arg (=*)  | The core clock used for the GPUs. Cards are separated with a comma. "*" can be used to skip a card. |
                                         
-
-
-
 ## Recent Changelog:
+  
+### lolMiner 1.45
+
+_Changes_
+- Added Ethash + Alephium dual mining mode analogous to existing Ethash + Ton mode. Use --dualmode ALEPHDUAL to use it. Supported GPUs: Nvidia Turing & Ampere generation, AMD Polaris (RX 400, 500), Navi and Big Navi generations.
+- Stratum connections will now have an increasing timeout (steps of 5 seconds) when reconnecting plus a small random time of 1 second in order to not overload the target pool in case of recovering from a network outtake. 
+- lolMiner API now has new page /gui, which allows you to watch your rig mining in a web browser. Navigate to http://<ip of your rig>:<apiport>/gui in your brower doing so. 
+- Added experimental (at the moment a bit slow) Ethash kernels for new AMD BC-250 APUs
+- In dual mining the algorithm that mined a share will now be shown in command line output
+- --ton-mode 6 stratum mode will now obey the prefix send to it on the first bytes of the nonce (request from other pools that want to use this scheme)
+- Startup time of dual mining on non-LHR cards is now reduced to 30 seconds after DAG build
+- Removed --ton-mode 2 from automatic detection (you still can request it explicitly) - ton-pool.com will instead use mode 1 for existing and mode 6 for upcoming new stratum servers. 
+
+_Fixes_
+- Fixed multiple stratum bugs - mostly crash fixes when running web socket based connections
+- Windows: clicking into the miner Window will no longer halt the miner completely
+
+### lolMiner 1.44
+  
+_Features_
+- Added experimental Ethash + Ton dual mining kernels for Nvidia Pascal generation GPUs.
+- Setting the parameter --maxdualimpact to 0 will now completely disable dual mining on this card. 
+- Setting the parameter **--dualdevices** can now be used to make GPUs mine **Ton only in Eth+Ton dual mode**. In combination with **--maxdualimpact** this means one can choose for every card which algorithm to mine. (See example below)
+- Automatic tuning for dual mining will now always make sure the parameter is adjusted so the GPUs start on both algorithms if --maxdualimpact is not set. Manually setting --maxdualimpact will disable automatic parameter stretching.
+- Windows: Adjusted LHR parameters a bit for more stable operation.
+- icemining.ca Ton stratum now can use the --pass or --dualpass parameter to apply pool settings.
+
+_Fixes_
+- Windows: fixed a bug that caused abnormal high stale rates on Ethash and Ethash / Ton dual mining on Nvidia cards.
+- Windows: fixed a bug that made the miner crash when a https connection tried to re-connect (mostly Ton).
+- Linux: fixed a bug that might cause a SIGSEV or SIGPIPE crash on some Linux platforms when reconnecting.
+- Fixed a bug that caused the miner to enter re-connect routine when one endpoint of a Ton - pool did not work, although other endpoints did connect well (That in combination with the previous one was root cause for most Ton errors in Windows we recently had).
+- Fixed a bug with icemining.ca Ton stratum not sending correct job id when dual mining on AMD cards.
+- Fixed a bug with json style configuration not working with dual mining in 1.43 release version.
+- Temporarily disabled the ZIL cache function on AMD GPUs, because it sometimes did not swap clearly. We will bring this back as soon as possible.
+
+Example for --dualdevices and --maxdualimpact
+Consider a 6 card rig with --dualdevices 4,5 --maxdualimpact `0,0,*,*,*,*`
+This rig will mine: 
+- Eth only on GPUs 0 & 1      (ton dual mining disabled by maxdualimpact)
+- Eth + Ton on GPUs 2 & 3
+- Ton only on GPUs 4 & 5     (eth mining disabled by dualdevices)
+
   
 ### lolMiner 1.38
 _Changes_
