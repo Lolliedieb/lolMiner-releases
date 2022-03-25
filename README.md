@@ -2,8 +2,8 @@
 
 A git repository for lolMiner release versions
 
-Helpful information in : https://github.com/Lolliedieb/lolMiner-releases/wiki
-Releases information in : https://github.com/Lolliedieb/lolMiner-releases/releases
+* Helpful information in : https://github.com/Lolliedieb/lolMiner-releases/wiki
+* Releases information in : https://github.com/Lolliedieb/lolMiner-releases/releases
 
 ## Supported Algorithm
 
