@@ -119,6 +119,25 @@ Parameter | Description
                                         
 ## Recent Changelog:
   
+### lolMiner 1.46a
+
+_Changes_
+- Significantly improved the Ton performance in Eth+Ton dual mining for all supported GPUs. Gain is 15-20% over the old implementation at same Eth reward - combined with new tuning some cards can be much higher (e.g. RX 580) while others optimize for more Eth hash rate (e.g. RX 5700)
+- Changed the Eth+Ton and Eth+Alephium tuning functions on AMD and all Nvidia non-LHR cards. Tuning now uses a scoring function to score resulting Eth and dual coin rewards and try to optimize this. Note that with --maxdualimpact you still can just define the max % of Eth hashrate to give away. This will overwrite the scoring function.
+- Added experimental Eth+Alephium dual mining kernels for Pascal GPUs.
+- API now also gives the worker name on Ethash, Ton and Alephium mining.
+- Updated Web-gui.
+- Ton stratum: https://next.ton-pool.com now using mode 2 automatically again. New whalespool server wss://stratum.whalestonpool.com/stratum now using mode 6 automatically.
+
+_Fixes  _
+- 1.46a: Fixed a bug causing the miner to sometimes end up in an infinite re-connect cycle - instead of actually reconnecting
+- 1.46a: Fixed a bug causing --maxdualimpact not having effect on some Nvidia cards
+- Fixed a bug causing connection time out (for a retry) not working properly
+- Fixed a bug in Alephium stratum: miner did not check fail-over when primary worker name was not accepted by the pool
+- Fixed a crash when trying to specify more fail-over pools for dual algorithm then for the primary connection
+- Windows: fixed a bug causing dual mining (especially Eth+Alephium) freeze the card & driver on startup 
+- Fixed some minor  glitches
+  
 ### lolMiner 1.45
 
 _Changes_
