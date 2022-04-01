@@ -122,6 +122,52 @@ Parameter | Description
 |  --cclk arg (=*)  | The core clock used for the GPUs. Cards are separated with a comma. "*" can be used to skip a card. |
                                         
 ## Recent Changelog:
+
+### lolMiner 1.48
+
+_Changes_
+- Implementing the new LHR scheme in Windows. Recommended driver: 512.15 
+- Slightly improved initial speed after startup on 510.x & 512.x drivers allowing to reach best performance faster
+- Made the LHR unlocker more robust against small changes in work load. We still recommend to not put other load then mining during the calibration phase - after that is finished, the miner is more robust. 
+- Full hash rate cards will disable LHR detection latest one minute after --lhrwait has passed. This means that by default one minute after the DAG was created the cards now get "protected" from further detection.
+- Added Nvidia core junction temperature reading
+- Added color grades for temperatures in web api
+- Change in configuration for making it more comfy: If the number of entries for --cclk, --mclk, --lhrtune or --maxdualimpact matches exactly the number of selected GPUs, the miner will now automatically skip over the inactive devices. E.g. --devices 1,2,4 --cclk 1050,1400,1500 now makes sense, while before --cclk *,1050,1400,*,1500 was needed to skip over inactive devices. 
+- --lhrtune 0 is now semantically identical to --lhrtune off
+
+_Fixes_
+- Changed handling of user/wallet names containing one or multiple dots. This should fix issues with mining rig rentals and ezil pool. Note: some pool might not like appending your user name with a dot. If so and you get authorization rejected make sure you use --worker instead
+- Fixed a bug causing LHR unlock not working when too many GPUs needed to perform DAG repair in Aleph dual mining (yea, that is a special case one ... )
+- Fixed a bug causing RTX 3050 & RTX 3080 12GB to have extremely low Ethash performance when dual mining
+- Fixed a bug causing dual mining hash rate on FHR cards not showing up during dual mine calibration in 1.47
+- Fixed a bug causing --lhrtune off occasionally not to work in 1.47
+
+  
+### lolMiner 1.47
+Note: at the moment the release is Linux only, because testing the new scheme on Windows will take us some time. Be patient please :)
+
+_Changes_
+- lolMiner bringing you the **fastest public Ethash LHR solver**! 77.2 - 78.2% on GDDR6 and 76 - 77% on GDDR6X Nvidia Ampere cards! Exceptions: 86% on RTX 3060 v1 with driver 460.39 or older, 55-58% on RTX 3050 and RTX 3080 12G.  Fee on the new scheme is 1%, other solvers are unchanged. Please read the important notes section below.
+- Added support for LHR unlock in 470.103.01 and all 510.x drivers. In fact *we highly recommend* using these drivers, because it will give a more stable unlocker experience! 
+- the parameter **--lhrtune** now takes absolute % values to fix a certain percentage of unlocking. If chosen too high, lolMiner will reduce the value to the maximum possible. The value will be tied to keep regardless of the number of locks this implies. The default is "auto" in which the miner tries to balance the number of locks and re-calibrations with the speed to achieve, hash rate might change from time to time based on unlock quality heuristics.
+- Cheaper locks: when unlocking the miner will continue mining at low speed to make the unlock procedure more cheap.
+-  Reduced Ton & Alephium fee in Eth+Ton / Ethash+Alephium dual mining to **0%**. You will be only paying the 1% fee on Ethash in this dual mining. This also means: no more unsafe connections to Ton servers to collect fee in case you are in a country with mining restrictions - if your own Ton connection is using Stratum over TLS. 
+- New parameter **--silence** that controls the amount of information the miner will print during its work. 0 is the default behavior, 1 will turn off "new job" messages, 2 will additionally turn of the messages about found shares, 3 will leave the miner with the minute statistics only. 
+- Added Nvidia memory junction temperature readings on cards that support this, e.g. GDDR6X customer GPUs, most professional and server GPUs and so on.
+
+_Fixes_
+- Fixed a bug with dual mining on LHR cards where the dual algorithm was mined with reduced rate after Ethash epoch change.
+- Fixed a bug with --compactaccept not showing the * sign on short statistics.
+
+_Important notes about the new LHR unlocker scheme_
+- **Use 470.103.01 or 510.x drivers!** They have turned out to be much more stable in unlock in testing then older drivers.
+- The miner software needs to learn certain aspects about your cards over time to optimize for the best balanced pool hash rate. The needed calibration will get better over time, but the things learned are too complex to display them or store into parameters. 
+- Therefore in automatic mode the miner might start with a slightly slower hash rate at the beginning, but will get better over time. In non-automatic mode you might see more re-calibrations during the first hour of mining then normal. If the number keeps too high after that point, lower the requested % value.
+- As a consequence: the longer you can keep it running the better - avoid frequent restarts of the software.
+- Dual mining with Aleph & Ton is supported as well as doing ZIL dual mining. When doing ZIL make sure --enablezilcache is used on all the LHR cards, because the re-calibration is needed on every hard epoch change.
+- Try to keep your settings as stable es possible. Especially: Set clocks that your GPUs can keep without running into thermal throttling. Also **use locked clock core** with no set power limit to maintain a stable GPU core clock for ideal results. Having GPUs freely changing their clocks and sometimes running into their power limit will invalidate a lot of data collected and decrease efficiency of the unlocker a lot. Same applies to memory clock - do not change it after the calibration did start. Use **--lhrwait** parameter to delay the initial calibration until you are done with your settings.
+- The initial configuration takes approx 3-4 minutes from the moment the DAG was build.
+- Keep away other work load from your GPU as e.g. connected screens. Also CPU mining in parallel to the new unlocker is untested and might give unexpected results.
   
 ### lolMiner 1.46a
 
