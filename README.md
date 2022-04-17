@@ -1,4 +1,6 @@
-# lolMiner
+# lolMiner 
+### AMD & Nvidia Miner for Ethash, Etchash, Autolykos2, Beam, Grin, Ae Flux, Equihash and more
+### Best Dual Miner for TON and ALPH
 
 A git repository for lolMiner release versions
 
@@ -25,8 +27,8 @@ A git repository for lolMiner release versions
 | Equihash 144/5 | 1.0 |     
 | Equihash 192/7 | 1.0 |
 | Equihash 210/9 | 1.0 |
-| Etchash | 0.7  |
-| Ethash | 0.7 |
+| Etchash | 0.7 - Only 1.0 LHR |
+| Ethash | 0.7 - Only 1.0 LHR|
 | ZelHash | 1.0 |
 
 
