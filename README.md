@@ -122,11 +122,41 @@ Parameter | Description
 Parameter | Description
 | ------------- | ------------- |
 |  --cclk arg (=*)  | The core clock used for the GPUs. Cards are separated with a comma. "*" can be used to skip a card. |
-                                        
-## Recent Changelog:
+
+### lolMiner 1.51
+  
+_Changes_
+
+- Windows: significantly improved the speed of Nvidia Ethash mining
+- Extended working range of 100% LHR unlocker to 470 and 472 drivers. Note: please do not use the new 515.x drivers - on them the unlock currently does not work. 
+- New parameter for dualmining: **--dualfactor** (default: "auto"). (see Note below)
+
+_Fixes_
+- Linux: Fixed a bug causing the Zombie mode on 5G Pascal GPUs (1060 5G, P2000) not to work.
+- Minor LHR unlocker stability improvements.
+  
+### lolMiner 1.50
+
+ lolMiner has only 0.7% fee on Ethash, 1.5% on Autolykos V2 and only 1%+0% fee on dual mining. You will find no lower ones in the market with this feature set. 
+
+_Changes_
+- 100% LHR unlock on LHR V1 and V2 GPUs. Unlock working on all supported algorithms including Ethash and dual Mining. Requires Nvidia driver versions 510.x (Linux) or 512.x (Windows) and sudo / administrator privileges!
+- Added experimental LHR v3 unlock to ~90% (3050) and ~92% (3080 12G) (default enables)  Use **--lhrv3boost 0** to disable the mode and fall back to ~65% unlock (see notes below).  
+- If the pool connection gets lost on the dual mining algorithm, the miner will now stop the dual mining to save the energy and continues in Ethash only mode until the connection is re-established.  
+- Updated web gui
+
+_Fixes_
+- Fixed a bug in 1.49 causing Ergo mining not to start on Nvidia GPUs.
+
+_Notes_
+- The LHR unlock will start about 30 seconds after the miner did start, giving room for running the DAG generation with delayed OC.
+- If any of the above requirements are not met, the miner will load the old 79% unlock function and print a fitting warning method with the statistics. 
+- The experimental mode for LHR V3 seems to sometimes have unstable when starting up with only a reboot solving it - but after a first successful start it is stable - therefore the option to turn it off if you are struggling to start it up too many times. 
+- When configuring the --lhrv3boost via json file, use "LHRV3BOOST" : 1 to set it.
   
 ### lolMiner 1.49 
 
+_Changes_
 - Improved performance of Nvidia LHR V2 cards in Ethash to 79 - 79.5% (86.5 - 87 % on RTX 3060 V1 and 460.39 driver). Note that dual mode codes remain unchanged.
 - Added an experimental **zombie mode** for Nvidia Pascal generation 5GB cards, allowing them to continue mining Ethash after epoch 492 (in Linux)
 - **Reduced fee** for LHR unlocker back to 0.7%. Now all Ethash solo codes have only 0.7% fee (again). 
