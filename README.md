@@ -124,6 +124,19 @@ Parameter | Description
 |  --cclk arg (=*)  | The core clock used for the GPUs. Cards are separated with a comma. "*" can be used to skip a card. |
                                         
 ## Recent Changelog:
+  
+### lolMiner 1.49 
+
+- Improved performance of Nvidia LHR V2 cards in Ethash to 79 - 79.5% (86.5 - 87 % on RTX 3060 V1 and 460.39 driver). Note that dual mode codes remain unchanged.
+- Added an experimental **zombie mode** for Nvidia Pascal generation 5GB cards, allowing them to continue mining Ethash after epoch 492 (in Linux)
+- **Reduced fee** for LHR unlocker back to 0.7%. Now all Ethash solo codes have only 0.7% fee (again). 
+- LHR cards that have memory junction temperature sensors will automatically throttle LHR unlock by ~0.4 - 0.5% when hitting 106° C memory clock to prevent unneeded locks
+- LHR calibration on startup now taking approx 2 minutes instead of 4. 
+- Extended crc table for Ethash up until epoch 550
+- Changed default behavior for "." signs in wallet address when Ton or Aleph dual mining. These will now automatically separate the string at the given position, so the thing after a . is treated as worker name.
+
+_Fixes_
+- Fixed a bug that may cause TLS connections not cleanly reconnecting after a connection loss
 
 ### lolMiner 1.48
 
