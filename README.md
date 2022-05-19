@@ -1,6 +1,6 @@
 # lolMiner 
 ### AMD & Nvidia Miner for Ethash, Etchash, Autolykos2, Beam, Grin, Ae Flux, Equihash and more
-### Best Dual Miner for TON and ALPH
+### Best Dual Miner for TON and ALPH with full Unlock LHR in all ALGOs
 
 A git repository for lolMiner release versions
 
@@ -89,8 +89,8 @@ Parameter | Description
 |  --ethstratum arg (=ETHPROXY)  |        Ethash stratum mode. Available options: <br \> ETHV1: EthereumStratum/1.0.0 (Nicehash) <br \> ETHPROXY: Ethereum Proxy |
 |  --worker arg (=eth1.0)        |        Separate worker name for Ethereum Proxy stratum mode. |
 |  --mode arg (=b)              |         Kernel mode to mine on. Comma separated values for configuring multiple cards differently. |
-|  --lhrtune arg (=auto)         |        Offset to most important LHR parameters. If your card is unstable or does not unlock try negative values. Range is +/-40. |
-|  --lhrwait arg (=0)            |        Time in seconds to wait after startup before any LHR detection or calibration takes place. |
+|  --lhrtune arg (=auto)         |        Offset to most important LHR parameters. If your card is unstable or does not unlock try negative values. Range is +/-40. (old) |
+|  --lhrwait arg (=0)            |        Time in seconds to wait after startup before any LHR detection or calibration takes place. (old) |
 | --disable-dag-verify [=arg(=1)] (=0) |  Disable the CPU side verification and repair of DAG. |
 |  --dagdelay [=arg(=0)] (=-1)     |      Delay between creating the DAG buffers for the GPUs. Negative values enable parallel generation (default). |
 |  --enablezilcache [=arg(=1)] (=0) |     Allows 8G+ GPUs to store the DAG for mining Zilliqa. It will generated only once and offers a faster switching. |
