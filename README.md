@@ -123,6 +123,24 @@ Parameter | Description
 | ------------- | ------------- |
 |  --cclk arg (=*)  | The core clock used for the GPUs. Cards are separated with a comma. "*" can be used to skip a card. |
 
+### lolMiner 1.52
+  
+_Changes_
+
+- New memory management for Ergo on Nvidia GPUs. Fixes the miner not working on current epoch on latest release and fixes the requirement to restart the miner on Ergo epoch change
+- Added 2 more epochs on Ergo for 3G AMD GPUs. Note that a better management with automatic switch to zombie mode is planned in next version.
+- Updated WebUI with a lot of fancy redesign :) 
+- Slight changes to LHR unlocker to improve the unlocker stability.
+- Removed: 2G zombie modes for Ergo on AMD cards
+- Removed: Support for mining Ton in single and dual mining modes. Note that existing dual mining configurations will automatically launch Eth / Etc / Ubiq only mode, so existing configurations will not be broken. 
+
+_Fixes_
+- Fixed multiple issues that caused the miner not to properly reconnect when it took too many attempts.
+- Added an internal stratum watchdog, that will restart the entire stratum stack internally, when not connected for a longer while. 
+- Fixed a potential segmentation fault at startup
+- Fixed a segmentation fault when Alephium dual mining is requested, but the dual worker did not get authorized 
+  
+  
 ### lolMiner 1.51
   
 _Changes_
