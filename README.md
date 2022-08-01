@@ -1,6 +1,6 @@
 # lolMiner 
 ### AMD & Nvidia Miner for Ethash, Etchash, Autolykos2, Beam, Grin, Ae Flux, Equihash and more
-### Best Dual Miner for TON and ALPH with full Unlock LHR in all ALGOs
+### Best Dual Miner for KASPA and ALPH with full Unlock LHR in all ALGOs
 
 A git repository for lolMiner release versions
 
@@ -122,6 +122,18 @@ Parameter | Description
 Parameter | Description
 | ------------- | ------------- |
 |  --cclk arg (=*)  | The core clock used for the GPUs. Cards are separated with a comma. "*" can be used to skip a card. |
+
+### lolMiner 1.53
+
+_Changes_
+
+- Added Eth/Etc/Ubiq + Kaspa dual mining solver for AMD RX 400, 500, 5000 and 6000 series and Nvidia RTX 2000 / 3000 series. Use --dualmode KASPADUAL to select it. Fee is 1% + 0%.
+- Slightly improved dual mining performance of Ethash + Alephium on AMD RX 5000 and RX 6000 series
+- Slightly improved energy efficiency of Ethash on AMD RX 5000 and RX 6000 series 
+- Added new parameter **--max-latency**. If the pool share latency is above this value and failover pools are configured, the miner will terminate the connection and connect to the next failover pool (at the earliest after 10 shares on the active connection). This is repeated if necessary until a pool remains below the latency limit. The default value is 0, which disables the feature. In dual-mining, multiple values can be specified separated by a comma, where the first value is for the first algorithm and the second is for the second algorithm. If only one value is specified, it applies to all connections. 
+
+_Known issues: 
+The miner seems to crash on some Windows machines running ETC+Kas on 4G cards. We are not yet sure why, but we will investigate. 
 
 ### lolMiner 1.52
   
