@@ -132,7 +132,8 @@ _Changes_
 - Slightly improved energy efficiency of Ethash on AMD RX 5000 and RX 6000 series 
 - Added new parameter **--max-latency**. If the pool share latency is above this value and failover pools are configured, the miner will terminate the connection and connect to the next failover pool (at the earliest after 10 shares on the active connection). This is repeated if necessary until a pool remains below the latency limit. The default value is 0, which disables the feature. In dual-mining, multiple values can be specified separated by a comma, where the first value is for the first algorithm and the second is for the second algorithm. If only one value is specified, it applies to all connections. 
 
-_Known issues: 
+_Known issues_
+  : 
 The miner seems to crash on some Windows machines running ETC+Kas on 4G cards. We are not yet sure why, but we will investigate. 
 
 ### lolMiner 1.52
