@@ -33,7 +33,7 @@ A git repository for lolMiner release versions
 
 
 ## Options supported by lolMiner
-To see some basic configuration examples, see here: https://github.com/Lolliedieb/lolMiner-releases/wiki/lolMiner-1.38---Basic-usage-(English)
+To see some basic configuration examples, see here: https://github.com/Lolliedieb/lolMiner-releases/wiki/lolMiner-Basic-usage-(English)
 
 ### General Options
 
