@@ -64,7 +64,8 @@ Parameter | Description
 |  --pers arg                   |         The personalization string. Required when using --algo for Equihash algorithms|
 |  --keepfree arg (=5)          |         Set the number of MBytes of GPU memory that should be left free by the miner.|
 |  --benchmark arg              |         The algorithm to benchmark|
-|  -c [ --coin ] arg           |          The coin to mine - this is an alternative to --algo that sets both, the algorithm and the personalization string for Equihash coins. |
+|  -c [ --coin ] arg           |          The coin to mine - this is an alternative to --algo that sets both, the algorithm and the personalization string for Equihash coins. (old)|
+|  --max-latency     |   From v1.53 If the pool share latency is above this value and failover pools are configured, the miner will terminate the connection and connect to the next failover pool (at the earliest after 10 shares on the active connection). This is repeated if necessary until a pool remains below the latency limit. The default value is 0, which disables the feature. In dual-mining, multiple values can be specified separated by a comma, where the first value is for the first algorithm and the second is for the second algorithm. If only one value is specified, it applies to all connections. |
 
 ### Statistics Options:
 Parameter | Description
@@ -86,9 +87,10 @@ Parameter | Description
 ### Ethash Specific Options:
 Parameter | Description
 | ------------- | ------------- |
-|  --ethstratum arg (=ETHPROXY)  |        Ethash stratum mode. Available options: <br \> ETHV1: EthereumStratum/1.0.0 (Nicehash) <br \> ETHPROXY: Ethereum Proxy |
+|  --ethstratum arg (=ETHPROXY)  |        Ethash stratum mode. Available options: ETHV1: EthereumStratum/1.0.0 (Nicehash) ETHPROXY: Ethereum Proxy |
 |  --worker arg (=eth1.0)        |        Separate worker name for Ethereum Proxy stratum mode. |
-|  --mode arg (=b)              |         Kernel mode to mine on. Comma separated values for configuring multiple cards differently. |
+|  --mode arg (=b)              |         Kernel mode to mine on. Comma separated values for configuring multiple cards differently. Use --mode a (faster) --mode b (better energy efficiency). In mixed system select 'a' for skipping over the AMD cards.  --mode s Added a split DAG mode for Nvidia GPUs in case that the memory allocation fails on the primary kernels. This will be a bit slower, but improve compatibility, especially for 5G GPUs. Use --mode s to force it.|
+|  --lhrv3boost    | From v1.50 experimental LHR v3 unlock to ~90% (3050) and ~92% (3080 12G) (default enables) Use --lhrv3boost 0 to disable the mode and fall back to ~65% unlock. The experimental mode for LHR V3 seems to sometimes have unstable when starting up with only a reboot solving it - but after a first successful start it is stable - therefore the option to turn it off if you are struggling to start it up too many times. -When configuring the --lhrv3boost via json file, use "LHRV3BOOST" : 1 to set it. | 
 |  --lhrtune arg (=auto)         |        Offset to most important LHR parameters. If your card is unstable or does not unlock try negative values. Range is +/-40. (old) |
 |  --lhrwait arg (=0)            |        Time in seconds to wait after startup before any LHR detection or calibration takes place. (old) |
 | --disable-dag-verify [=arg(=1)] (=0) |  Disable the CPU side verification and repair of DAG. |
@@ -122,6 +124,15 @@ Parameter | Description
 Parameter | Description
 | ------------- | ------------- |
 |  --cclk arg (=*)  | The core clock used for the GPUs. Cards are separated with a comma. "*" can be used to skip a card. |
+|  --mclk arg (=*)  | The memory clock only used for TON to reduce Watts, tt is not MEMORY Offset. "*" can be used to skip a card. |
+
+### lolMiner 1.54
+
+_Fixes_
+
+- Fixed a bug sometimes causing duplicate send shares in Kaspa dual mining.
+- Fixed a bug "Received a defect stratum message: conversion of data to type \"b\" failed" on new Kaspa pools and the solo mining adapters.
+- Fixed a bug causing --dualworker not to work right with Kaspa dual mining. 
 
 ### lolMiner 1.53
 
