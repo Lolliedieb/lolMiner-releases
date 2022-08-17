@@ -101,7 +101,7 @@ Parameter | Description
 ### Algorithm Split Options & Dual Mining Options:
 Parameter | Description
 | ------------- | ------------- |
-|  --dualmode arg (=none)    |            Dual mode used. Allowed options: none, zil, zilEx, eth, etc |
+|  --dualmode arg (=none)    |            Dual mode used. Allowed options: none, zil, zilEx, eth, etc, D-SPLIT, KASPADUAL, ALEPHDUAL,... |
 |  --dualpool arg             |           Pool configuration for extra connection, Format <pool>:<port> |
 |  --dualuser arg             |           Username or wallet address for the extra connection |
 |  --dualpass arg              |          Password for the extra connection (Optional) |
