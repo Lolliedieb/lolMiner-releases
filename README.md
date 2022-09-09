@@ -108,6 +108,7 @@ Parameter | Description
 |  --dualworker arg (=eth1.0)  |          Separate worker name for the 2nd connection. |
 |  --dualtls arg               |          Toggle TLS ("on" / "off") for the 2nd connection. |
 |  --dualdevices arg          |           Split rule for etc and beam split mode. Use a comma separated list of indexes or "4G" (default). |
+|  --dualfactor arg          |           Split rule for etc and beam split mode. Use a comma separated list of indexes or "4G" (default). |
 
 ### Managing Options:
 Parameter | Description
@@ -125,6 +126,24 @@ Parameter | Description
 | ------------- | ------------- |
 |  --cclk arg (=*)  | The core clock used for the GPUs. Cards are separated with a comma. "*" can be used to skip a card. |
 |  --mclk arg (=*)  | The memory clock only used for TON to reduce Watts, tt is not MEMORY Offset. "*" can be used to skip a card. |
+
+### lolMiner 1.55a
+
+_Changes_
+
+- Significantly improved Flux mining performance on AMD RX 5000 (+10% on  5700) and AMD RX 6000 based GPUs (+15-22%)
+- Mining Flux, Beam, Equihash 144/5 and Equihash 192/7 will now display the iteration/s (it / s) for easier OC tuning and the pool sol/s calculated from submitted and accepted shares.
+- Flux mining can now be selected via **--algo FLUX** without needing to specify **--pers**.
+- Enabling Equihash 144/5 and Equihash 192/7 will now also support --pers auto instead of capital --pers AUTO for enabling pool automatic selection.
+- Added DAG check and repair function for Ethereum Classic mining up to epoch 300
+- Added ETH / ETC + Kaspa code for Nvidia Pascal based GPUs. 
+- Added option to mix different Ethash style algorithms when using the fail-over pool function. To use this you now can use **eth:**, **etc:** and **ubiq:** as a *prefix* for your *fail-over pool address* to indicate this pool uses a different algorithm then the one configured initially. This will allow to automatically switch from Ethash to an Etchash pool when "the merge" happens as one can configure for normal Ethash mining and configure one of the fail-over pools as Etchash, so when the primary pool gets disconnected or rejects the authorization (these two are expected behavior for Eth pools after the merge), then the miner can switch to a fail-over e.g. configured to mine Etchash.  See example files "mine_eth_backup_etc.sh" or "mine_eth_backup_etc.bat" on how to use it. 
+**Note:** when using this feature with prefixes like tls:// or ssl://, then put the new prefix **after** the prefix for the communication layer. So tls://etc: is valid, while etc:tls:// is not.
+
+_Fixes_
+- Fixed a bug that might cause the miner to crash when an Ergo pool connection needs to reconnect.
+- Fixed a bug that can cause random invalid shared when mining Kaspa on AMD GPUs.
+
 
 ### lolMiner 1.54
 
