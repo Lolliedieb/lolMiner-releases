@@ -108,7 +108,7 @@ Parameter | Description
 |  --dualworker arg (=eth1.0)  |          Separate worker name for the 2nd connection. |
 |  --dualtls arg               |          Toggle TLS ("on" / "off") for the 2nd connection. |
 |  --dualdevices arg          |           Split rule for etc and beam split mode. Use a comma separated list of indexes or "4G" (default). |
-|  --dualfactor arg          |           Split rule for etc and beam split mode. Use a comma separated list of indexes or "4G" (default). |
+|  --dualfactor arg          |           Solver will be dualfactor * Eth/Etc hash rate. So for example if the factor is 25 and the Eth hash rate is 59.5 mh/s, then the dual hash rate will be 25 times 59.5 mh/s = 1487,5 mh/s. The maximum dual factor at the moment is 64, a value of 0 will disable dual mining on the GPU |
 
 ### Managing Options:
 Parameter | Description
