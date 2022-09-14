@@ -29,7 +29,7 @@ A git repository for lolMiner release versions
 | Equihash 210/9 | 1.0 |
 | Etchash | 0.7 |
 | Ethash | 0.7 |
-| ZelHash | 1.0 |
+| ZelHash (Flux) | 1.0 |
 
 
 ## Options supported by lolMiner
