@@ -127,6 +127,21 @@ Parameter | Description
 |  --cclk arg (=*)  | The core clock used for the GPUs. Cards are separated with a comma. "*" can be used to skip a card. |
 |  --mclk arg (=*)  | The memory clock only used for TON to reduce Watts, tt is not MEMORY Offset. "*" can be used to skip a card. |
 
+### lolMiner 1.56
+
+_Changes_
+
+- Major performance increase for Flux mining on Nvidia Ampere GPUs
+- Major performance increase for Beam mining on Nvidia Ampere GPUs
+- Mining Flux and Beam on all Nvidia GPUs now uses Cuda instead of OpenCL
+- Slight performance improvements for Flux mining on AMD RX 500, RX 5000 and RX 6000 (about 0.2 it/s)
+- Mining any Equihash based coin (Flux, BTG, Aion, ...) now supports extra nonce subscription via stratum (e.g. for better profit switching pool experience)
+- Added option --no-cl to disable detection of OpenCL powered GPUs (fixes a crash on some rigs where the Nvidia OpenCL driver crashes - happens mostly when having a rig with many GPUs)
+
+_Fixes_
+- Disabled DAG checking for ETC mining on 4G AMD GPUs, because this was always failing (investigating to bring it back asap)
+- Nvidia LHR cards will no longer run the LHR unlock when not mining Et(c)hash or Ergo - this will prevent them from crashing on some  other algorithms. 
+
 ### lolMiner 1.55a
 
 _Changes_
