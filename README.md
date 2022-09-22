@@ -126,6 +126,24 @@ Parameter | Description
 |  --cclk arg (=*)  | The core clock used for the GPUs. Cards are separated with a comma. "*" can be used to skip a card. |
 |  --mclk arg (=*)  | The memory clock only used for TON to reduce Watts, tt is not MEMORY Offset. "*" can be used to skip a card. |
 
+### lolMiner 1.58
+
+_Changes_
+
+- Added Kaspa only mining mode for Nvidia Pascal and new and AMD Polaris, Navi and Big Navi. Use --algo KASPA to mine it. Fee is 0.75%.  
+
+**Tuning advice:** On Nvidia Turing and Ampere GPUs this algorithm works best when locking the core clock to desired value (higher gives more performance, lower reduces power draw). We recommend  to **not** set the power limit. Also to save energy, the memory clock can be chosen rather low. On Linux you can use --mclk 810 (but when you change back to an other algorithm you might need to reset this or reboot the rig). 
+
+**Note:** If your OS does not list lolMiner supporting Kaspa only mining yet, use the configuration for TON mining (cause **temporarily** we will accept --algo TON to mine Kaspa. 
+
+### lolMiner 1.57
+
+_Changes_
+- An other performance improvement of Flux mining on Ampere based GPUs (1.5 - 3.5% depending on model and clocks)
+
+_Fixes_
+- Fixed a bug causing some Ergo pools to disconnect the miner frequently (Introduced with 1.56 :/ )
+
 ### lolMiner 1.56
 
 _Changes_
