@@ -24,10 +24,14 @@ A git repository for lolMiner release versions
 | Cuckatoo 32 | 2.0 |
 | Cuckaroo 29-32 | 1.0 |
 | Cuckaroo 29-40 | 1.0 |
+| Dual ETC + (KAS/ALEPH) | 1.0 / 0.0 |
+| Dual ETH (ETHW) + (KAS/ALEPH) | 1.0 / 0.0 |
 | Equihash 144/5 | 1.0 |     
 | Equihash 192/7 | 1.0 |
 | Equihash 210/9 | 1.0 |
 | Etchash | 0.7 |
+| Ethash (ETHW) | 0.7 |
+| Kaspa | 0.75 |
 | ZelHash (Flux) | 1.0 |
 
 
@@ -125,6 +129,15 @@ Parameter | Description
 | ------------- | ------------- |
 |  --cclk arg (=*)  | The core clock used for the GPUs. Cards are separated with a comma. "*" can be used to skip a card. |
 |  --mclk arg (=*)  | The memory clock only used for TON to reduce Watts, tt is not MEMORY Offset. "*" can be used to skip a card. |
+
+### lolMiner 1.59a
+
+_Changes_
+
+- Significantly improved Kaspa performance and efficiency on Nvidia Turing and Ampere GPUs. Also the new codes are now working much better when GPUs are power limited.
+- Slightly improved Kaspa performance and efficiency on AMD Navi and Big Navi GPUs
+- Kaspa performance statistics should now be a bit more smooth
+
 
 ### lolMiner 1.58
 
