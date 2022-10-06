@@ -130,6 +130,17 @@ Parameter | Description
 |  --cclk arg (=*)  | The core clock used for the GPUs. Cards are separated with a comma. "*" can be used to skip a card. |
 |  --mclk arg (=*)  | The memory clock only used for TON to reduce Watts, tt is not MEMORY Offset. "*" can be used to skip a card. |
 
+
+### lolMiner 1.60
+
+_Changes_
+- Significantly improved performance on Flux for Nvidia Turing & Ampere and AMD RX 5000 based GPUs. The expected performance on Ampere and Navi GPUs is about 15-20% above common implementations. On Turing based GPUs the performance matches common codes, but is more energy efficient. Fee is 1.5% for the new codes. 
+- Equihash 125/4 (Flux), 144/5 and 192/7 stratum can now distinguish between stale shares and other rejected. 
+
+_Fixes_
+-  Smaller fixes in Kaspa stratum, removing the extra string lines when a share gets rejected and fixing a potential infinite loop that might consume CPU time.
+
+
 ### lolMiner 1.59a
 
 _Changes_
