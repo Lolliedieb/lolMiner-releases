@@ -32,7 +32,7 @@ A git repository for lolMiner release versions
 | Etchash | 0.7 |
 | Ethash (ETHW) | 0.7 |
 | Kaspa | 0.75 |
-| ZelHash (Flux) | 1.0 |
+| ZelHash (Flux) | 1.0 / 1.5 |
 
 
 ## Options supported by lolMiner
@@ -130,6 +130,17 @@ Parameter | Description
 |  --cclk arg (=*)  | The core clock used for the GPUs. Cards are separated with a comma. "*" can be used to skip a card. |
 |  --mclk arg (=*)  | The memory clock only used for TON to reduce Watts, tt is not MEMORY Offset. "*" can be used to skip a card. |
 
+
+### lolMiner 1.61
+
+_Changes_
+- Slightly improved performance of Flux mining on Nvidia Ampere and Turing cards (by approx 1.5-2.5% compared to 1.60)
+- Improved system memory footprint when mining Flux or Beam on Nvidia GPUs. This allows running the solvers on more then 8 GPUs with only 4G system memory.
+- Speed exposed by API is now smoothed, so especially on all Equihash based algorithms the hashrate figures derived from API values will appear more smooth
+
+_Fixes_
+- Fixed a bug causing Flux mining on Nvidia Pascal GPUs not working
+- Fixed a bug causing stale shares being counted as defect shares in API - and not correctly exposed in miner UI as well.
 
 ### lolMiner 1.60
 
