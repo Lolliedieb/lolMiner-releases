@@ -131,7 +131,7 @@ Parameter | Description
 |  --cclk arg (=*)  | The core clock used for the GPUs. Cards are separated with a comma. "*" can be used to skip a card. |
 |  --mclk arg (=*)  | The memory clock only used for TON to reduce Watts, tt is not MEMORY Offset. "*" can be used to skip a card. |
 
-### lolMiner 1.61
+### lolMiner 1.62
 
 _Changes_
 
