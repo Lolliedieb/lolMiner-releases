@@ -14,6 +14,7 @@ A git repository for lolMiner release versions
 
 | Algorithm  | Fee % |
 | ------------- | ------------- |
+| Alephium | 0.75  |
 | Autolykos V2 | 1.5  | 
 | BeamHash III | 1.0  |
 | Cuckoo 29 | 2.0  |
@@ -130,6 +131,36 @@ Parameter | Description
 |  --cclk arg (=*)  | The core clock used for the GPUs. Cards are separated with a comma. "*" can be used to skip a card. |
 |  --mclk arg (=*)  | The memory clock only used for TON to reduce Watts, tt is not MEMORY Offset. "*" can be used to skip a card. |
 
+### lolMiner 1.61
+
+_Changes_
+
+- Added basic support for Intel Arc Desktop GPUs on the following algorithms: ETC, ETC+KAS (1), Kaspa, Flux, Ergo, Beam (2) & Equihash 144/5 (2). Fees are equal to Nvidia and AMD GPUs on the corresponding algorithms. Tested Intel OpenCL driver versions are 22.24.23453 and 22.32.23937.
+- Added support for mining Alephium in non-dual mode for Nvidia Pascal GPUs and newer. Use **--algo ALEPH** to mine it. Fee is 0.75%.
+- Slight performance improvement for Kaspa non-dual on Nvidia GPUs.
+- Added Aeternity Cuckoo 29 & Grin Cuckatoo 32 kernels for RX 6600 and RX 6700 series GPUs.
+- Updated web ui for supporting Intel GPUs, more pools and coins. 
+- **--cclk** for locking core clock and **--mclk** for locking memory clock now work for Nvidia Pascal and Turing GPUs (3). 
+- If --cclk or --mclk are used to lock clocks, these will now be reset on lolMiner exit.
+- Added reading of junction temperature and memory temperature for Nvidia GPUs for drivers 515 or newer.
+- Re-arranged nonce consumption for Kaspa to allow pools with 3 bytes extra-nonce without (too many) duplicate shares.  
+- Linux: Added reading of GPU power draw and core clock on Intel Arc GPUs.
+
+(1) Only on the 8G+ Intel GPUs: A580, A750 and A770.
+(2) Beam and Equihash are experimental on Intel GPUs. Also see known issues when running multiple cards.
+(3) Needs admin / sudo privileges. Tested 460.93 driver and higher. --mclk should only be used to mine core intense coins like Kaspa or Aleph in order to reduce power draw by the memory. Recommended value in this case: 810. 
+
+_Fixes_
+- Fixed a bug that may cause a segmentation fault on startup.
+- Fixed a bug causing LHR detection to sometimes start on Nvidia 520 and newer drivers
+- Fixed a bug causing **--list-devices** not to work.
+- Fixed a bug causing DNS over HTTPs to fail often.
+- Fixed a bug causing Intel GPUs not to be sorted by PCIE bus and address in device list.
+- Fixed a bug causing rejected shares on Equihash not appearing in API (but they did in miner dashboard stats).
+- Fixed a bug in web ui to sometimes not refreshing.
+
+_Known issues_
+- When running multiple Intel Arc GPUs on Beam or Equihash 144/5 the cards will slow down. This is likely due to a limitation of the Intel OpenCL implementation and the way lolMiner works with it. We hope to get this fixed in one of the upcoming versions. 
 
 ### lolMiner 1.61
 
