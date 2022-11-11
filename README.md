@@ -1,5 +1,5 @@
 # lolMiner 
-### AMD & Nvidia Miner for Etchash, Autolykos2, Beam, Grin, Ae Flux, Equihash and more
+### AMD & Nvidia & Intel Miner for Etchash, Autolykos2, Beam, Grin, Ae Flux, Equihash and more
 ### Best Dual Miner for KASPA and ALPH with full Unlock LHR in all ALGOs
 
 A git repository for lolMiner release versions
