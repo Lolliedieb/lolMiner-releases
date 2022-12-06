@@ -129,7 +129,43 @@ Parameter | Description
 Parameter | Description
 | ------------- | ------------- |
 |  --cclk arg (=*)  | The core clock used for the GPUs. Cards are separated with a comma. "*" can be used to skip a card. |
-|  --mclk arg (=*)  | The memory clock only used for KASPA/ALPH to reduce Watts, tt is not MEMORY Offset. "*" can be used to skip a card. |
+|  --coff arg (=*)  | The core offset used for the GPUs. Cards are separated with a comma. "*" can be used to skip a card. |
+|  --mclk arg (=*)  | The memory clock only used for KASPA/ALPH to reduce Watts with value 810. "*" can be used to skip a card. |
+|  --moff arg (=*)  | The memory offset used for the GPUs. Cards are separated with a comma. "*" can be used to skip a card. |
+|  --pl arg (=*)  | The power limit used for the GPUs. Cards are separated with a comma. "*" can be used to skip a card. |
+|  --fan arg (=*)  | The % of the fan used for the GPUs. Cards are separated with a comma. "*" can be used to skip a card. |
+|  --no-oc-reset  |  To avoid reset the overclock settings applied when ending the miner |
+
+
+### lolMiner 1.64
+
+_Changes_
+
+- Improved Kaspa only mining performance. Speed increase is about 8-8.5% on Nvidia Pascal GPUs, 4.5-5% on Nvidia Turing and Ampere GPUs and 3-4% on AMD Navi and Big Navi GPUs
+- Beta feature: added options to set core clock offset (**--coff**), memory clock offset (**--moff**), power limit (**--pl**) and a fixed fan speed (**--fan**) on common Nvidia GPUs. Required are admin privileges and Nvidia **drivers 520 or higher**!
+The syntax is the same as with --cclk and --mclk - if a single value is given then it will be applied to all compatible GPUs, else a coma separated list of values can be given using a \* character to skip over GPUs. (1)
+- Added a new parameter --no-oc-reset to turn off the reset of overclock settings when ending the miner.
+- Windows: Added a beta gui to generate overclock settings strings / .bat files for the miner. Also the tool can apply the chosen settings directly.
+
+(1) Note: No responsibility taken for the values set. Please use with care. If your mining os had build in functions to set these settings we recommend using them instead of the miner settings.
+
+_Fixes_
+- Fixing a bug with ETHV1 (nicehash) stratum mode that may cause the worker name to be appended twice when it was given by --user <wallet>.<workerName> (the use of --worker did not have this issue).  
+
+
+### lolMiner 1.63
+
+_Changes_
+- Improved the Kaspa only mining performance on Nvidia Turing, Ampere and Ada GPUs by about 3.5%. (1)
+- Significantly improved the Kaspa only mining energy efficiency on Nvidia Turing, Ampere and Ada GPUs by 7-11% depending on the actual model.
+- Values given to --dualfactor parameter will now be value checked and rounded / capped to working values. 
+
+(1) Can be higher in case the card was power limited before.
+
+_Fixes_
+- Fixed a bug causing the miner to show a crash message when lolMiner was ended via ctrl+c
+- Fixed a bug causing lolMiner not to start Kaspa mining on Nvidia GPUs when the Nvidia OpenCL installation on the system is broken.
+
 
 ### lolMiner 1.62
 
