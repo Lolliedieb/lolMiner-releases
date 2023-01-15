@@ -7,7 +7,7 @@ A git repository for lolMiner release versions
 * Downloads releases : https://github.com/Lolliedieb/lolMiner-releases/releases
 * Helpful information in : https://github.com/Lolliedieb/lolMiner-releases/wiki
 * Telegram Group : https://t.me/lolMiner
-* Discord Group :  https://discord.gg/jvfRvK5wTv
+* Discord Group :  https://discord.gg/zypMYNbJ5k
 * Youtube Channel : https://www.youtube.com/c/lolMinerSupport
 
 ## Supported Algorithm
