@@ -1,5 +1,5 @@
 # lolMiner 
-### AMD & Nvidia & Intel Miner for Etchash, Autolykos2, Beam, Grin, Ae Flux, Equihash and more
+### AMD & Nvidia & Intel Miner for Etchash, Autolykos2, Beam, Grin, Ae, Flux, Equihash, Kaspa, Nexa and more
 ### Best Dual Miner for KASPA and ALPH with full Unlock LHR in all ALGOs
 
 A git repository for lolMiner release versions
@@ -136,6 +136,50 @@ Parameter | Description
 |  --fan arg (=*)  | The % of the fan used for the GPUs. Cards are separated with a comma. "*" can be used to skip a card. |
 |  --no-oc-reset  |  To avoid reset the overclock settings applied when ending the miner |
 
+
+### lolMiner 1.67
+
+_Changes_
+- Improved Nexa performance on Nvidia Turing based gpus by approximately 35%+. 
+- Improved Nexa performance on 8G Nvidia Ampere gpus by approximately 1.5% when memory is not locked and ~3% on locked memory (5000).  10G and higher gpus got an additional 5% performance increase.
+- Improved Nexa performance on Nvidia Ada based gpus by approximately 25% on locked memory clock (5000) and about 8% on unlocked memory.
+- Added Nexa echelon mining protocol to support pools using it, e.g. 137pool.org. The needed format will be automatically detected when connecting to a pool using it. 
+- Updated WebUI for Nexa mining and more pools to support. 
+- Windows: Updated GUI
+
+_Fixes_
+- Fixed a bug causing scattered defect shared on Nexa mining (all OS)
+- Fixed a display bug when setting power limit on Nvidia GPUs saying the value is out of Range, although its fine. (all OS)
+- Fixed a bug in Nexa mining of the miner creating only defects (Windows)
+- Fixed a bug in Nexa mining of the miner crashing silently after a few minutes (Windows)
+
+Note 1: Every code update - in particular when so massive as here - may require re-tuning your oc & uv settings for ideal results and stability.  
+Note 2: memory locking on Ada gpus is only recommended if the core clock is locked  as well and not maxed out - on high core clock in combination with memory locked to 5000 the performance will struggle due to worse memory timings. 
+
+General note: The Nexa gpu codes are (and will be in foreseeable future) joint work with Iedoc from [BzMiner](https://github.com/bzminer/bzminer). Miner fees will be evenly shared regardless of which of these two flavors of the code you prefer.  
+
+
+
+### lolMiner 1.66
+
+_Changes_
+
+- Added support for mining Nexa on Nvidia Pascal or newer generation GPUs (1). Use --algo NEXA to mine it. Fee is 2%.
+**Note:** The pool protocol supported matches the one introduced by rplant pool. That said pools tested by this version are in alphabetical order: [acc-pool.pw](https://nexa.acc-pool.pw/), [rplant.xyz](https://pool.rplant.xyz/), [vipor.net](https://vipor.net/) and [woolypooly.com](https://woolypooly.com/). That said this list is not exclusive and every other pool following this protocol should work.
+**Note 2:** This code is joint work with Iedoc from BzMiner and it is a refined version with approximately 20% higher speed then the code released in [BzMiner v13.0.1](https://github.com/bzminer/bzminer/releases/tag/v13.0.1). An updated version of BzMiner featuring the improvements of this kernel as well as the same fee level will be released soon. 
+
+(1) Primary focus in optimization were the low to medium range Nvidia Ampere GPUs. The performance of other generations may vary, but certainly improve the next versions. 
+
+### lolMiner 1.65
+
+_Changes_
+
+- Improved Kaspa performance in ETC and ETHW dual mining by about 6-7% on AMD (Big) Navi GPUs and 10-12% on Nvidia Turing and Ampere, measured at the same Ethash speed. The actual improvement depends on the concretely selected dual factor. Re-tuning your setup is highly recommended.
+- Improved Kaspa performance in Kaspa only mining mode by 0.6 to 1.2% on Nvidia GPUs and 0.4-0.5% on AMD (Big) Navi GPUs at approximately same power draw.
+-  Beta feature: Added experimental support for AMD RX7900 series. Supported algorithms: Et(c)hash, kHeavyHash and the corresponding dual mining.  
+
+_Fixes_
+- Fixed some minor display bugs 
 
 ### lolMiner 1.64
 
