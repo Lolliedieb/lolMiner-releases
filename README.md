@@ -137,6 +137,16 @@ Parameter | Description
 |  --fan arg (=*)  | The % of the fan used for the GPUs. Cards are separated with a comma. "*" can be used to skip a card. |
 |  --no-oc-reset  |  To avoid reset the overclock settings applied when ending the miner |
 
+### lolMiner 1.68
+  
+ _Changes_
+- Significantly improved Nexa mining performance on supported GPUs (e.g. up to  +25% on 8G Ampere GPUs)
+
+_Fixes_
+- Fixed a bug that can make the miner crash with error message "Authorization problem on all configured pools 1" during Nexa mining
+
+_Note_
+The alternative Windows version uses a different mechanism to determine the available memory on a Windows system. On most 8G GPUs this will cause the miner to select a smaller dataset table that has only slightly above 2 G. Therefore the alternative version might be a good choice for systems with connected screens or for Nexa / Zil mining using the Zil switching app. 
 
 ### lolMiner 1.67
 
