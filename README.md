@@ -33,6 +33,7 @@ A git repository for lolMiner release versions
 | Etchash | 0.7 |
 | Ethash (ETHW) | 0.7 |
 | Kaspa | 0.75 |
+| Nexa | 2.0 |
 | ZelHash (Flux) | 1.0 / 1.5 |
 
 
