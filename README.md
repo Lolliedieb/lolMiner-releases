@@ -137,6 +137,26 @@ Parameter | Description
 |  --fan arg (=*)  | The % of the fan used for the GPUs. Cards are separated with a comma. "*" can be used to skip a card. |
 |  --no-oc-reset  |  To avoid reset the overclock settings applied when ending the miner |
 
+### lolMiner 1.70
+
+_Changes_
+
+- Improved Nexa mining performance by 6 - 8% on all supported GPUs (except AMD Vega / VII).
+- Improved power efficiency of Nexa mining.
+
+_Hint:_
+Due to recent problems we advice to use the miner with --dns-over-https 0 when connecting to an auto-location pool. Else the pool mirror you receive might not be ideal for your location.
+
+### lolMiner 1.69
+
+_Changes_
+
+- Added Nexa support for AMD Vega  / VII (1) and RDNA 1-3 GPUs (2)
+- The parameter **--keepfree** can now be used to keep a certain amount of memory free on each GPU on Nexa mining. This might end up in allocating a smaller lookup table, so the GPU memory has space left for other workloads (3)
+- The --keepfree parameter is now working for each GPU separately. Use a comma separated list of values if you want to assign different values for each GPU.
+- Nexa mining will now allocate memory for each GPU sequentially and delay later cards startup slightly to help systems with small virtual memory.
+
+
 ### lolMiner 1.68
   
  _Changes_
