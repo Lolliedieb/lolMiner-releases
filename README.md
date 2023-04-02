@@ -137,6 +137,23 @@ Parameter | Description
 |  --fan arg (=*)  | The % of the fan used for the GPUs. Cards are separated with a comma. "*" can be used to skip a card. |
 |  --no-oc-reset  |  To avoid reset the overclock settings applied when ending the miner |
 
+### lolMiner 1.72
+
+_Changes_
+- Improved Nexa mining performance by 4% on AMD Vega, Navi and Big Navi gpus and by 2-3% on Nvidia Turing and Ampere gpus.
+
+### lolMiner 1.71
+
+_Changes_
+
+- Added support for mining Kaspa on AMD RX Vega using rocm based drivers (amdgpu-pro 20.50 and newer)
+- Added support for mining Nexa on AMD RX 400 & 500 series gpus
+- Improved Nexa mining performance on AMD Vega based gpuss by 45% (Vega 56 & Vega 64) and up to 60% on Radeon VII, Note: needs still drivers that are HSA based as very new amdgpu-pro versions or rocm drivers. 
+- Improved Nexa mining performance on all other supported AMD & Nvidia Turing and Ampere gpus by 1.5 - 3% depending on model
+
+_Fixes_
+- fixed a bug causing Vega GPUs not starting to mine Nexa on systems with xnack feature enabled. 
+
 ### lolMiner 1.70
 
 _Changes_
