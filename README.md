@@ -69,6 +69,7 @@ Parameter | Description
 |  --pers arg                   |         The personalization string. Required when using --algo for Equihash algorithms|
 |  --keepfree arg (=5)          |         Set the number of MBytes of GPU memory that should be left free by the miner.|
 |  --benchmark arg              |         The algorithm to benchmark|
+|  --socks5 <proxyPool>:<proxyPort> |  For Socks5 connection  |
 |  -c [ --coin ] arg           |          The coin to mine - this is an alternative to --algo that sets both, the algorithm and the personalization string for Equihash coins. (old)|
 |  --max-latency     |   From v1.53 If the pool share latency is above this value and failover pools are configured, the miner will terminate the connection and connect to the next failover pool (at the earliest after 10 shares on the active connection). This is repeated if necessary until a pool remains below the latency limit. The default value is 0, which disables the feature. In dual-mining, multiple values can be specified separated by a comma, where the first value is for the first algorithm and the second is for the second algorithm. If only one value is specified, it applies to all connections. |
 
