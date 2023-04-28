@@ -1,5 +1,5 @@
 # lolMiner 
-### AMD & Nvidia & Intel Miner for Etchash, Autolykos2, Beam, Grin, Ae, ALPH, Flux, Equihash, Kaspa, Nexa and more
+### AMD & Nvidia & Intel Miner for Etchash, Autolykos2, Beam, Grin, Ae, ALPH, Flux, Equihash, Kaspa, Nexa, Ironfish and more
 ### Best Dual Miner for KASPA and ALPH with full Unlock LHR in all ALGOs
 
 A git repository for lolMiner release versions
@@ -137,6 +137,49 @@ Parameter | Description
 |  --pl arg (=*)  | The power limit used for the GPUs. Cards are separated with a comma. "*" can be used to skip a card. |
 |  --fan arg (=*)  | The % of the fan used for the GPUs. Cards are separated with a comma. "*" can be used to skip a card. |
 |  --no-oc-reset  |  To avoid reset the overclock settings applied when ending the miner |
+
+### lolMiner 1.75
+
+_Changes_
+- Improved Ironfish mining speed by 4-5% on all supported GPUs.
+- Added support to mine Alephium on AMD GCN3 (RX 400, Rx500) and newer GPUs
+- Added support to mine Ironfish on AMD GCN3 gpus
+- Renamed Blake3-Ironfish to Blake3-Iron to make it identical to competing miner softwares and better detectable by some mining OS
+
+### Fixes
+- Fixed a bug causing to little shares submitted when mining Alephium on Nvidia GPUs
+- Fixed a bug causing high stale and defect share counts when mining Ironfish on AMD GPUs
+- Fixed a bug causing AMD RX 7900 series GPUs not starting up Ironfish mining 
+- Fixed a bug causing only defect shares on Ironfish mining when a pool did not zero the Grafitti part of the block header (e.g. ezil pool)
+
+### lolMiner 1.74
+
+_Changes_
+- Added support for Ironfish mining (use -a IRONFISH for putting out your rod) for Nvidia Pascal and newer and AMD Vega and newer GPUs. (AMD Vega require rocm based drivers). Fee is 0.75%. 
+This version uses the pool protocol extension of [TeamRedMiner](https://github.com/todxx/teamredminer) and should be compatible to all pools supporting their [protocol](https://github.com/Kerney666/ironfish/blob/trm_stratum/TRM_STRATUM.md) as well as their [solo mining protocol fork of Ironfish node](https://github.com/Kerney666/ironfish/tree/trm_stratum).
+- Slight improved performance and reduction of stales for Alephium mining on Nvidias.
+
+
+### lolMiner 1.73
+
+_Changes_
+
+**Improved Kaspa codes:**
+- Improved performance of Kaspa on Nvidia Turing and newer by 0.2-1% depending on model
+- Improved efficiency of Kaspa mining on Nvidia Turing and newer by 2-3% depending on model
+- Halved number of stale shares on Kaspa on Nvidia Turing and newer
+
+**Improved Nexa codes:**
+- Improved performance of Nexa on Nvidia Turing and newer by 2-5% depending on model
+- Improved performance of Nexa on AMD cards by 0.5 - 1.5% depending on model
+
+- All GPUs on Nexa and Nvidia GPUs on Kaspa now do a clean shutdown once hitting ctrl+c - that should prevent issues and crashing when exiting / resetting oc
+- Enabling reading of GPU junction temperature ( and memory temperature on Nvidia GDDR6x GPUs) on Nvidia 530 drivers or newer 
+- Windows: updated the oc gui with added AMD overclock functionality 
+
+_Fixes_
+- Fixed a bug causing --tstart and --tstop not working in Nexa solvers
+- Fixed a bug causing the miner not to pause on a connection loss in Nexa solvers
 
 ### lolMiner 1.72
 
