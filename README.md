@@ -139,6 +139,23 @@ Parameter | Description
 |  --fan arg (=*)  | The % of the fan used for the GPUs. Cards are separated with a comma. "*" can be used to skip a card. |
 |  --no-oc-reset  |  To avoid reset the overclock settings applied when ending the miner |
 
+### lolMiner 1.76
+
+_Changes_
+- Improved performance of Blake3-Alephium mining on Nvidia Turing and newer cards by 15-18%. 
+- Improved performance of Blake3-Ironfish mining on Nvidia Turing and newer cards by 9-11%.
+- Slightly improved performance of Blake3-Ironfish mining on AMD cards by ~0.8%.
+- Slightly improved performance of Nexa mining on Nvidia Turing and newer cards by ~0.6%.
+- Updated dag repair tables for OctaSpace, ETHW & ETC mining to cover current epochs
+- Added option **--screen** to enable a special mining mode in case a GPU is connected to a screen to prevent shuttering. The value -1 activates this mode for all cards, any value above or equal 0 will activate this mode for the GPU with index equal to the provided number. E.g. --screen 0 will active it for the first card detected by the miner. 
+Note: it is in the nature of this option to cost some performance when used. At the moment this option is available for Ethash (AMD cards), Kaspa (Nvidia), Nexa, Alephium and Ironfish solvers.
+
+_Fixes_
+- Fixed a bug with Alephium mining on RTX4090 producing duplicated shares.    
+- Fixed a bug making some Nvidia only rigs to need --no-cl parameter to mine Ironfish.
+- Fixed a bug causing Nvidia Ampere-based CMP HX GPUS & Nvidia Ax000 series not to mine blake3 algorithms.
+- Fixed a bug rarely causing defect shares on AMD cards when mining Ironfish.
+
 ### lolMiner 1.75
 
 _Changes_
