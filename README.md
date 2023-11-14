@@ -139,6 +139,17 @@ Parameter | Description
 |  --fan arg (=*)  | The % of the fan used for the GPUs. Cards are separated with a comma. "*" can be used to skip a card. |
 |  --no-oc-reset  |  To avoid reset the overclock settings applied when ending the miner |
 
+lolMiner 1.77b
+
+_Changes_
+- Added support to mine SHA512_256D used for Radiant (RXD). Use -a RADIANT to mine it, fee is 0.75%. Supported GPUs: AMD RX 470 - 590, Vega (requires rocm drivers) and all Navi and newer, Nvidia Pascal and newer. 
+- Added support to mine Ethash B3 used for Rethereum (RETH). Use -a ETHASHB3 to mine it, fee is 1.0%. Supported GPUs: AMD Navi and newer, Nvidia Pascal and newer.
+- Added ethash dag correction tables for epochs 13-29 (PowBlocks, XPB), 112-129 (OCTA) and 608 - 619 (ETHW)
+
+_Fixes_
+- Fixed a bug in Ethash solvers for AMD Navi and newer and Nvidia GPUs that caused a crash when mining at some low epochs. This fix will allow to mine PowBlocks (XPB).
+- Fixed a bug introduced in 1.76a causing CTXC mining to not work.
+
 ### lolMiner 1.76
 
 _Changes_
