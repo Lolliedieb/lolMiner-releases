@@ -35,6 +35,8 @@ A git repository for lolMiner release versions
 | Ironfish | 0.75 |
 | Kaspa | 0.75 |
 | Nexa | 2.0 |
+| Radiant | 0.75 |
+| Rethereum | 1.00 |
 | ZelHash (Flux) | 1.0 / 1.5 |
 
 
