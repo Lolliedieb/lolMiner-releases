@@ -141,7 +141,7 @@ Parameter | Description
 |  --fan arg (=*)  | The % of the fan used for the GPUs. Cards are separated with a comma. "*" can be used to skip a card. |
 |  --no-oc-reset  |  To avoid reset the overclock settings applied when ending the miner |
 
-lolMiner 1.77b
+### lolMiner 1.77b
 
 _Changes_
 - Added support to mine SHA512_256D used for Radiant (RXD). Use -a RADIANT to mine it, fee is 0.75%. Supported GPUs: AMD RX 470 - 590, Vega (requires rocm drivers) and all Navi and newer, Nvidia Pascal and newer. 
