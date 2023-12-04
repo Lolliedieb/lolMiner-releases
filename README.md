@@ -1,6 +1,6 @@
 # lolMiner 
 ### AMD & Nvidia & Intel Miner for Etchash, Autolykos2, Beam, Grin, Ae, ALPH, Flux, Equihash, Kaspa, Nexa, Ironfish and more
-### Best Dual Miner for KASPA and ALPH with full Unlock LHR in all ALGOs
+### Best Dual Miner for ALPH and IRON and KARLSEN and RADIANT with full Unlock LHR in all ALGOs
 
 A git repository for lolMiner release versions
 
@@ -34,6 +34,7 @@ A git repository for lolMiner release versions
 | Ethash (ETHW) | 0.7 |
 | Ironfish | 0.75 |
 | Kaspa | 0.75 |
+| Karlsen | 1.0 |
 | Nexa | 2.0 |
 | Radiant | 0.75 |
 | Rethereum | 1.00 |
@@ -140,6 +141,25 @@ Parameter | Description
 |  --pl arg (=*)  | The power limit used for the GPUs. Cards are separated with a comma. "*" can be used to skip a card. |
 |  --fan arg (=*)  | The % of the fan used for the GPUs. Cards are separated with a comma. "*" can be used to skip a card. |
 |  --no-oc-reset  |  To avoid reset the overclock settings applied when ending the miner |
+
+### lolMiner 1.78
+
+_Changes_
+
+- Added support for **Beam Hash III** on Nvidia RTX 4000 and AMD RX 7000 generation GPUs
+- Added support for **Heavyhash-Karlsen** for Nvidia Pascal and newer and AMD RX 6000 and newer GPUs. Use --algorithm KARLSEN to mine it, fee is 1%
+- Added multiple **dual mining** options for EthashB3 algorithm (Rethereum). The algorithm can now be used with --dualmode to be set to ALEPHDUAL (Blake3 - Alephium), FISHDUAL (Blake3 - Ironfish), RXDDUAL (Sha512 / 256D, Radiant) or KARLSENDUAL (HeavyHash-Karlsen). Fee rule for dual mining: its the same as with the individual algorithms, so if EthB3 takes 1% and Radiant mining 0.75 as individual algorithms, you pay 1% on the EthB3 portion and 0.75% on the Radiant portion when dual mining. Usage is the same as described [here](https://github.com/Lolliedieb/lolMiner-releases/wiki/lolMiner-1.43-dual-and-split-mining-options) for Ethash.
+- The algorithms ALEPH, ETHASHB3, IRONFISH, KARLSEN, NEXA and RADIANT now support **splitting the hashrate** analog to the options described [here](https://github.com/Lolliedieb/lolMiner-releases/wiki/lolMiner-1.43-dual-and-split-mining-options). Use --dualmode SPLIT-X to put X% of the hashrate to the 2nd connection given by --dualuser and --dualpool
+- When using split mining, the hashrate will now be displayed as one solver as well in stats as in the API. This gives a more consistent representation.
+- Reduced stale shares on algorithms ALEPH, ETHASHB3, IRONFISH, NEXA and RADIANT. 
+- Windows: Updated **GUI tool**
+- Added support for the **FishHash** algorithm (Future Ironfish PoW) for testing purposes. Use --algorithm FISHHASH-TEST to connect to a current Ironfish pool and run the shares just against the build in CPU verify. In this mode the difficulty is 1/256 of what the usual Blake3 difficulty would be. Use --algoriithm FISHHASH-TESTNET to connect to a real testnet pool and mine there including submitted shares. 
+
+_Fixes_
+
+- Fixed a bug causing BEAM mining to crash on newer cuda versions.  
+- Fixed a bug causing multiple algorithms to show hashrate in wrong place of statistics when running two algorithms on different GPUs.
+- Fixed a bug with Rethereum mining not working on Cuda 11 drivers. 
 
 ### lolMiner 1.77b
 
