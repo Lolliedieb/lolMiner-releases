@@ -159,7 +159,20 @@ _Fixes_
 
 - Fixed a bug causing BEAM mining to crash on newer cuda versions.  
 - Fixed a bug causing multiple algorithms to show hashrate in wrong place of statistics when running two algorithms on different GPUs.
-- Fixed a bug with Rethereum mining not working on Cuda 11 drivers. 
+- Fixed a bug with Rethereum mining not working on Cuda 11 drivers.
+
+  Examples DUAL RTH:
+  Code ALPH: 
+--dualmode ALEPHDUAL --dualpool your_pool_ALPH --dualuser your_WALLET_ALPH.%WORKER_NAME% _your_OC_
+
+Code IRON: (Only RTH)
+--dualmode FISHDUAL --dualpool your_pool_IRON --dualuser your_WALLET_IRON.%WORKER_NAME% _your_OC_
+
+Code KLS : (Only RTH)
+--dualmode KARLSENDUAL --dualpool your_pool_KLS --dualuser your_WALLET_KLS.%WORKER_NAME% _your_OC_
+
+Code RXD: (Only RTH)
+--dualmode RXDDUAL --dualpool your_pool_RXD --dualuser your_WALLET_RXD.%WORKER_NAME% _your_OC_
 
 ### lolMiner 1.77b
 
