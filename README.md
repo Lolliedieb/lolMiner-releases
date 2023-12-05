@@ -142,7 +142,7 @@ Parameter | Description
 |  --fan arg (=*)  | The % of the fan used for the GPUs. Cards are separated with a comma. "*" can be used to skip a card. |
 |  --no-oc-reset  |  To avoid reset the overclock settings applied when ending the miner |
 
-### lolMiner 1.78
+### lolMiner 1.78a
 
 _Changes_
 
