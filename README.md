@@ -142,6 +142,25 @@ Parameter | Description
 |  --fan arg (=*)  | The % of the fan used for the GPUs. Cards are separated with a comma. "*" can be used to skip a card. |
 |  --no-oc-reset  |  To avoid reset the overclock settings applied when ending the miner |
 
+### lolMiner 1.79
+
+_Changes_
+
+- Added Karlsen support for AMD RX 400, RX 500, RX Vega*, Radeon VII* and RX 5000 generation GPUs. This is for the stand alone solver only and **not** yet for RTH+KLS dual mining.   * RX Vega and Radeon VII requiereing an OpenCL driver with version number 3261.0 or higher.
+- Slightly improved Karlsen solvers for Nvidia GPUs by approximately 0.5 (Ampere) to 3 % (Pascal cards)
+
+_Fixes_
+- Fixed a bug causing FISHHASH-TESTNET solver not submitting shares to testnet server
+- Fixed a bug causing 1.78 added dual mining codes to not start up on some Linux systems
+- Fixed a bug causing multiple algorithms (RTH, NEXA, Radiant) not to start up on some systems in Windows
+- Fixed a bug causing KLS solver to sometimes segmentation fault in Linux
+- Fixed a bug causing AMD RDNA2 & RDNA3 cards to have low poolside Karlsen hashrate on older drivers. Hint: please update to drivers with OpenCL version above  3261.0 to get best possible performance out of your cards, cause the fix did cost a bit of raw speed. 
+
+_Notes & Tips:_
+- If you see the miner re-tunes the dualmode very often, because of clock change, try to spot a good factor and fix it via --dualfactor
+- The IRONDUAL dual mode does cost a lot of RETH performance on Nvidia cards. Therefore often the automatic tuning tunes it to 0. Therefore we advice to set a good for you --dualfactor on your own.
+
+
 ### lolMiner 1.78a
 
 _Changes_
