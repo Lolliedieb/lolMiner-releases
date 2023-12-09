@@ -242,6 +242,19 @@ _Changes_
 This version uses the pool protocol extension of [TeamRedMiner](https://github.com/todxx/teamredminer) and should be compatible to all pools supporting their [protocol](https://github.com/Kerney666/ironfish/blob/trm_stratum/TRM_STRATUM.md) as well as their [solo mining protocol fork of Ironfish node](https://github.com/Kerney666/ironfish/tree/trm_stratum).
 - Slight improved performance and reduction of stales for Alephium mining on Nvidias.
 
+### lolMiner 1.73
+
+_Changes_
+
+- Massively improved Karlsen mining performance on AMD RX 400, AMD RX 500 (both +45%) and AMD Vega 56 / 64 (both +92%). 
+- Improved Karlsen mining performance on AMD Radeon VII and AMD RX 5000 GPUs (+12%).
+
+Note: **All AMD Vega and VII** cards still need a driver that reports its **Driver version** as **3261.0 (HSA1.1,LC)** or higher. As far as we know all mining operation systems offer a driver packed that is new enough - but it might be this is the **latest**. 
+
+_Fixes_
+- Improved / Fixed hashrate regression in 1.78a / 1.79 of Nvidia GPUs in Windows on Alephium, EthashB3, Ironfish, Karlsen, Nexa and Radiant.
+- Fixes Karlsen performance regression on GTX 16xx GPUs  from 1.78 to 1.79.
+
 
 ### lolMiner 1.73
 
