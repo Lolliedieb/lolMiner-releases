@@ -1,5 +1,5 @@
 # lolMiner 
-### AMD & Nvidia & Intel Miner for Etchash, Autolykos2, Beam, Grin, Ae, ALPH, Flux, Equihash, Kaspa, Nexa, Ironfish and more
+### AMD & Nvidia & Intel Miner for Etchash, Autolykos2, Beam, Grin, Ae, ALPH, Flux, Equihash, Kaspa, Nexa, Ironfish, KARLSEN and more
 ### Best Dual Miner for ALPH and IRON and KARLSEN and RADIANT with full Unlock LHR in all ALGOs
 
 A git repository for lolMiner release versions
@@ -141,6 +141,21 @@ Parameter | Description
 |  --pl arg (=*)  | The power limit used for the GPUs. Cards are separated with a comma. "*" can be used to skip a card. |
 |  --fan arg (=*)  | The % of the fan used for the GPUs. Cards are separated with a comma. "*" can be used to skip a card. |
 |  --no-oc-reset  |  To avoid reset the overclock settings applied when ending the miner |
+
+### lolMiner 1.80a
+
+ _Changes_
+ - Added Karlsen support for AMD Vega and Radeon VII on PAL drivers (current Windows, older Linux). Note: For ideal performance and future developments on this mining software we strongly recommend moving to a Linux platform with modern drivers if you own this card, since not all future algorithms will be ported this way.
+- Massively improved Karlsen mining performance on AMD RX 400, AMD RX 500 (both +45%) and AMD Vega 56 / 64 (both +92%). 
+- Improved Karlsen mining performance on AMD Radeon VII and AMD RX 5000 GPUs (+12%).
+
+Note: **All AMD Vega and VII** cards still need a driver that reports its **Driver version** as **3261.0 (HSA1.1,LC)** or higher. As far as we know all mining operation systems offer a driver packed that is new enough - but it might be this is the **latest**. 
+
+_Fixes_
+- Improved / Fixed hashrate regression in 1.78a / 1.79 of Nvidia GPUs in Windows on Alephium, EthashB3, Ironfish, Karlsen, Nexa and Radiant.
+- Fixes Karlsen performance regression on GTX 16xx GPUs  from 1.78 to 1.79.
+- Fixed an issue causing RX 5000 cards sometimes to not work in Windows on recently added algorithms
+
 
 ### lolMiner 1.79
 
