@@ -1,6 +1,6 @@
 # lolMiner 
-### AMD & Nvidia & Intel Miner for Etchash, Autolykos2, Beam, Grin, Ae, ALPH, Flux, Equihash, Kaspa, Nexa, Ironfish, KARLSEN and more
-### Best Dual Miner for ALPH and IRON and KARLSEN and RADIANT with full Unlock LHR in all ALGOs
+### AMD & Nvidia & Intel Miner for Etchash, Autolykos2, Beam, Grin, Ae, ALPH, Flux, Equihash, Kaspa, Nexa, Ironfish, Karlsen and Pyrin and more
+### Best Dual Miner for ALPH and IRON and KARLSEN and PYRIN and RADIANT with full Unlock LHR in all ALGOs
 
 A git repository for lolMiner release versions
 
@@ -141,6 +141,14 @@ Parameter | Description
 |  --pl arg (=*)  | The power limit used for the GPUs. Cards are separated with a comma. "*" can be used to skip a card. |
 |  --fan arg (=*)  | The % of the fan used for the GPUs. Cards are separated with a comma. "*" can be used to skip a card. |
 |  --no-oc-reset  |  To avoid reset the overclock settings applied when ending the miner |
+
+### lolMiner 1.81
+
+_Changes_
+- Added support to mine Heavyhash-Pyrin (-a PYRIN) on Nvidia Turing and newer / AMD Navi and newer. Fee is 1%. Note: requires a Pyrin stratum pool or adjusted stratum bridge. Please keep an eye open on those.
+- Added support to dual mine EthashB3 and Heavyhash-Pyrin on Nvidia Turing and newer / AMD Navi and newer. Fee is 1% + 1% 
+- Added support to dual mine EthashB3 and Heavyhash-Karlsen on AMD RX 5000 series. 
+
 
 ### lolMiner 1.80a
 
