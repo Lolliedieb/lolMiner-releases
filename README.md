@@ -27,6 +27,7 @@ A git repository for lolMiner release versions
 | Cuckaroo 29-40 | 1.0 |
 | Dual ETC + (KAS/ALEPH) | 1.0 / 0.0 |
 | Dual ETH (ETHW) + (KAS/ALEPH) | 1.0 / 0.0 |
+| Dual RTH + (ALEPH/IRON/KLS/PYI/RXD) | 1.0 / 0.75 - 1.0 |
 | Equihash 144/5 | 1.0 |     
 | Equihash 192/7 | 1.0 |
 | Equihash 210/9 | 1.0 |
@@ -36,6 +37,7 @@ A git repository for lolMiner release versions
 | Kaspa | 0.75 |
 | Karlsen | 1.0 |
 | Nexa | 2.0 |
+| Pyrin | 1.0 |
 | Radiant | 0.75 |
 | Rethereum | 1.00 |
 | ZelHash (Flux) | 1.0 / 1.5 |
