@@ -144,6 +144,22 @@ Parameter | Description
 |  --fan arg (=*)  | The % of the fan used for the GPUs. Cards are separated with a comma. "*" can be used to skip a card. |
 |  --no-oc-reset  |  To avoid reset the overclock settings applied when ending the miner |
 
+### lolMiner 1.82
+
+_Changes_
+
+- Added support to mine Heavyhash-Pyrin on AMD RX Fury, RX 400, RX 500 and Vega / VII series
+- Increased Heavyhash-Pyrin performance of Nvidia GTX 16 series GPUs by over 100%
+- Increased Heavyhash-Pyrin performance of AMD RX 5500 series and AMD 7000 series GPUs by over 60%
+- Increased Heavyhash-Karlsen performance of AMD RX 5500 series and AMD 7000 series GPUs by over 15%
+- Increased Heavyhash-Pyrin performance of Nvidia Pascal GPUs by about 6+%, Slightly increased Heavyhash-Karlsen performance on Nvidia Pascal series by 1.3%
+- Slightly improved performance of Heavyhash-Pyrin on Nvidia RTX (by up to 1.5%) and AMD RDNA 2 cards (by 3% at improved efficiency), minor improvements to the Heavyhash-Karlsen performance as well
+- Added support to read memory temperatures on Nvidia drivers 545 and upwards (for those cards that support it)
+
+_Fixes_
+- Fixed a bug causing dual mining ETHW, ETC, Ubiq + Alephium being broken from 1.77 
+- Fixed a bug causing Pyrin mining not starting on Nvidia GPUs without --no-cl parameter from 1.81
+
 ### lolMiner 1.81
 
 _Changes_
