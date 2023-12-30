@@ -144,6 +144,19 @@ Parameter | Description
 |  --fan arg (=*)  | The % of the fan used for the GPUs. Cards are separated with a comma. "*" can be used to skip a card. |
 |  --no-oc-reset  |  To avoid reset the overclock settings applied when ending the miner |
 
+### lolMiner 1.82a
+
+_Changes_
+- Improved Heavyhash-Pyrin performance on GTX16 cards by about 25-30%, improved Heavyhash-Pyrin performance on GTX 10 series cards by about 10%.
+- Improved energy efficiency of Heavyhash-Karlsen mining on GTX 16 series cards. Also slightly improved performance by about 1.5%.
+
+_Fixes_
+- Fixed a bug causing ETH / ETC / Ubiq mining to sometimes crash with a segfault (introduced in 1.82a)
+- Fixed the "submit not found" bug on Karlsen & Pyrin mining
+- Fixed a bug causing too many rejected shares on Karlsen and Pyring when on unmineable pool. 
+- Fixed reading memory temperatures on AMD RTX 4000 cards 
+- Fixed a bug causing Beam mining to not work on AMD RX 5500 with 8G
+
 ### lolMiner 1.82
 
 _Changes_
