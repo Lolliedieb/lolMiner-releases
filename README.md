@@ -65,7 +65,7 @@ Parameter | Description
 | Parameter | Description |
 | ------------- | ------------- |
 |  -a [ --algo ] arg           |          The algorithm to mine.  |
-|  -p [ --pool ] arg           |          Mining pool to mine on <br/> Format: <pool>:<port> |
+|  -p [ --pool ] arg           |          Mining pool to mine on <br/> Format: `<pool>:<port>` |
 |  -u [ --user ] arg           |          Wallet or pool user account to mine on |
 |  --pass arg                  |          Pool user account password (Optional) |
 |  --tls arg                   |          Toggle TLS ("on" / "off") |
@@ -114,7 +114,7 @@ Parameter | Description
 Parameter | Description
 | ------------- | ------------- |
 |  --dualmode arg (=none)    |            Dual mode used. Allowed options: none, zil, zilEx, eth, etc, D-SPLIT, KASPADUAL, ALEPHDUAL,... |
-|  --dualpool arg             |           Pool configuration for extra connection, Format <pool>:<port> |
+|  --dualpool arg             |           Pool configuration for extra connection, Format `<pool>:<port>` |
 |  --dualuser arg             |           Username or wallet address for the extra connection |
 |  --dualpass arg              |          Password for the extra connection (Optional) |
 |  --dualworker arg (=eth1.0)  |          Separate worker name for the 2nd connection. |
@@ -436,7 +436,7 @@ The syntax is the same as with --cclk and --mclk - if a single value is given th
 (1) Note: No responsibility taken for the values set. Please use with care. If your mining os had build in functions to set these settings we recommend using them instead of the miner settings.
 
 _Fixes_
-- Fixing a bug with ETHV1 (nicehash) stratum mode that may cause the worker name to be appended twice when it was given by --user <wallet>.<workerName> (the use of --worker did not have this issue).  
+- Fixing a bug with ETHV1 (nicehash) stratum mode that may cause the worker name to be appended twice when it was given by `--user <wallet>.<workerName>` (the use of --worker did not have this issue).  
 
 
 ### lolMiner 1.63
@@ -779,8 +779,8 @@ _Changes_
 - The miner will now print the ip of the connected pool - to be able to detect e.g. faulty DNS entries
 - Added parameters --dualtls and --dualworker to toggle TLS and the worker name for the dual connection. To be used as with the parameters for the standard connection. 
 - **--statsformat** can now distinguish between the number of LHR locks "lhrlks" and the current --lhrtune parameter "lhrparam" 
-- Added a parameter **--vstats <number>** to modify the terminal width in number of characters to overwrite the automatic detection, which sometimes does not work with some terminal emulators like putty.
-- Added a parameter **--hstats <optional number>**. Given this parameter will switch the statistics to a way such that the statistics write a horizontal line per GPU instead of the default vertical (see screenshot below). When the automatic read terminal width is reached, the remaining entries will be printed to a 2nd set of lines. The vertical statistics can be combined with the usual --statsformat patterns to customize the displayed values per card. The optional number overwrites the the automatic screen width detection. To fit all values of **--statsformat extended** into one line we need **--hstats 150** or higher (recommended setting this value manually when accessing the rig via terminal emulator).
+- Added a parameter `--vstats <number>` to modify the terminal width in number of characters to overwrite the automatic detection, which sometimes does not work with some terminal emulators like putty.
+- Added a parameter `--hstats <optional number>`. Given this parameter will switch the statistics to a way such that the statistics write a horizontal line per GPU instead of the default vertical (see screenshot below). When the automatic read terminal width is reached, the remaining entries will be printed to a 2nd set of lines. The vertical statistics can be combined with the usual --statsformat patterns to customize the displayed values per card. The optional number overwrites the the automatic screen width detection. To fit all values of **--statsformat extended** into one line we need **--hstats 150** or higher (recommended setting this value manually when accessing the rig via terminal emulator).
 
 
 _Fixes_
@@ -1126,7 +1126,7 @@ _Fixed bugs_
 
 ### lolMiner 1.18a
 - Improved linux zombie mode power draw & speed Polaris GPUs (R9 380, RX Fury, RX 4x0 and RX 5x0). Depending on configuration, the zombie mode now uses 0.5 to 1W less energy and is 0.2 to 0.4 mh/s faster.
-- Added --zombie-tune <number> parameter for Polaris GPUs. This will increase the performance of zombie mode (further up on the general improvement) by an other 5-15%, depending on parameter and epoch (later epochs profit more). Default value is 0 (off), for most cards the value of 2 is optimal. If you see cards getting slower then before, set to 0 or 1. Note: you either can give one value for the whole rig or provide a comma separated list for each card individually. Cards not running zombie mode ignore the parameter.
+- Added `--zombie-tune <number>` parameter for Polaris GPUs. This will increase the performance of zombie mode (further up on the general improvement) by an other 5-15%, depending on parameter and epoch (later epochs profit more). Default value is 0 (off), for most cards the value of 2 is optimal. If you see cards getting slower then before, set to 0 or 1. Note: you either can give one value for the whole rig or provide a comma separated list for each card individually. Cards not running zombie mode ignore the parameter.
 - The parameter --4g-alloc-size can now also be set for each card individually
 - Slight rework of Beam Hash III back end. Improves poolside hash rate by approx 0.2 to 0.3% - displayed hashrate and power consume kept equal. 
 - Added a 4G_Ethash_Linux_Readme.txt file to the Linux release, giving guidance how to configure for ideal zombie mode performance.
@@ -1151,7 +1151,7 @@ Note: it may be needed to tune each card individually. Tune value of 2 works for
 - Added Cuckoo-29, Cuckaroo-30 CTX, Cuckatoo-31 (MWC) and Cuckatoo-32 (Grin) for RX 6800 family of GPUs
 - Reduced number of stale shares on Cortex algorithm. This will result in a minimally lower displayed hash rate, but higher pool side hash.
 - Added a basic temperature protection mechanism. See notes below for usage.
-- Added parameter **--singlethread** to work with Ethash and Equihash algorithm. This will disable the 2nd mining thread and slightly reduce performance of the involved cards. Use this option to reduce stumbles when a card does graphic output in parallel. Use **--singlethread** (equivalent to **--singlethread -1**) to enable single thread mode for all GPUs, use **--singlethread <gpu id>** to set the mode for one single card.
+- Added parameter **--singlethread** to work with Ethash and Equihash algorithm. This will disable the 2nd mining thread and slightly reduce performance of the involved cards. Use this option to reduce stumbles when a card does graphic output in parallel. Use **--singlethread** (equivalent to **--singlethread -1**) to enable single thread mode for all GPUs, use `--singlethread <gpu id>` to set the mode for one single card.
 - Added reading of junction temperature on AMD GPUs.
 - The API is now bound to the local host, causing less issues with firewalls.
 - Windows: use **--computemode** to automatically enable the compute mode on all detected AMD GPUs. Requires higher privileges and a driver restart, see example files.
@@ -1170,7 +1170,7 @@ _Known issues:_
 - On some Linux kernels there is a memory leak in the GPU driver component that effects lolMiner quite hard when mining with Navi cards. Keep system updated. (Note that this bug also affected earlier versions of lolMiner - so if it worked fine in last version it can be expected to do so further.)
 
 _Basic temperature management / overheating protection. _
-Use **--tstop <number>** to stop any mining operation on a GPU at the given temperature. Use **--tstart <number>** to allow a restart of the card below a lower temperature. Further you can use **--tmode edge/junction/memory** to apply the scheme to edge (chip), junction (hotspot) or memory temperature. If a GPU does not have the required sensors the chip temperature will be used as a back up - if no sensors are available at all the parameters will be ignored. 
+Use `--tstop <number>` to stop any mining operation on a GPU at the given temperature. Use `--tstart <number>` to allow a restart of the card below a lower temperature. Further you can use **--tmode edge/junction/memory** to apply the scheme to edge (chip), junction (hotspot) or memory temperature. If a GPU does not have the required sensors the chip temperature will be used as a back up - if no sensors are available at all the parameters will be ignored. 
 
 Note that at the moment the miner has no fan control module and also no throttling to keep a target temperature. This may be included in a future version. Thus you should put the limit high enough so the operation system or the driver has a chance to ramp up the fan speed itself. Currently tstop is supposed to be a overheat protection to prevent hardware damage in extreme cases, e.g. broken fans.
 
@@ -1216,7 +1216,7 @@ Note that at the moment the miner has no fan control module and also no throttli
 - Added ETCHash support for Radeon HD 79x0 / R9 280 (X) & RX 5300 3G. On Linux will be good for ETCHash till epoch ~250 (about July 2022) 
 - Added caching of last 5 used light caches. This will reduce the switching time for Nicehash & ZIL dual mining significantly. 
 - Added support for extranonce subscription on  EthereumStratum/1.0.0 (Nicehash) format - this will stop the miner from frequently reconnecting to Nicehash
-- Added detection of pool not accepting worker name in <wallet.workerName> format when using ETHPROXY stratum. Miner will reconnect with worker name copied into --worker in this case. 
+- Added detection of pool not accepting worker name in `<wallet.workerName>` format when using ETHPROXY stratum. Miner will reconnect with worker name copied into --worker in this case. 
 - Added experimental workaround for mining epoch 385+ with RX 470 - 590 and Linux kernel 5.6.x: Note this fix will deactivate the ZIL cache ability and force the miner to create DAG a bit slower. Deactivate it with --disableLinux56fix . Other Linux kernel versions and other GPUs are unchanged.
 - Fixed bug: "conversion of data to type "b" failed" when using ETHPROXY stratum mode on some pools.
 - Fixed potential issue causing GPUs to freeze when a GPU needs to reboot, e.g. epoch change or connection loss.
@@ -1231,8 +1231,8 @@ Note that at the moment the miner has no fan control module and also no throttli
 - Reworked Ethash codes for late epochs on Windows. See 4G_Windows_Readme.txt for configuring it.
 - Slightly improved Ethash efficiency for GCN 3 (R9 Fury, 470 - 590) & Navi cards
 - Added experimental support for Ethash on Nvidia GPUs (See note on release page)
-- Added new parameter: --4g-alloc-size <MByte> to define the memory allowed for Ethash on 4G cards. Maxing out will give more epochs of mining & better Zombie mode performance, lower values may improve compatibility. Suggested values: Linux: 4076, Windows 4008 - 4024
-- Added new parameter: --worker <Name> to set the worker in ETHPROXY stratum mode (improves pool compatibility)
+- Added new parameter: `--4g-alloc-size <MByte>` to define the memory allowed for Ethash on 4G cards. Maxing out will give more epochs of mining & better Zombie mode performance, lower values may improve compatibility. Suggested values: Linux: 4076, Windows 4008 - 4024
+- Added new parameter: `--worker <Name>` to set the worker in ETHPROXY stratum mode (improves pool compatibility)
 - Overall new Ethash host size back end - hopefully improving stability of mining
 - Fixed bug: Zombie mode generates defect shares in Windows
 - Fixed bug: Logs were not written when "LOG" : 1 was set in json style config file
