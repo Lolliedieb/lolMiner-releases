@@ -40,6 +40,7 @@ A git repository for lolMiner release versions
 | Pyrin | 1.0 |
 | Radiant | 0.75 |
 | Rethereum | 1.00 |
+| TON/GRAM | 1.00 |
 | ZelHash (Flux) | 1.0 / 1.5 |
 
 
@@ -144,6 +145,30 @@ Parameter | Description
 |  --fan arg (=*)  | The % of the fan used for the GPUs. Cards are separated with a comma. "*" can be used to skip a card. |
 |  --no-oc-reset  |  To avoid reset the overclock settings applied when ending the miner |
 
+### lolMiner 1.84
+
+_Changes_
+
+- Improved Ton / Gram mining performance by 15-18% on AMD RDNA 1-3 and NVIDIA Pascal and newer GPUs
+- Added EthashB3 + Ton dual mining via --dualmode TONDUAL 
+- Added support to mine Gram on gramcoin.org - the https endpoint https://api-pool.gramcoin.org will be detected automatically, but the mode also can be selected manually by using --ton-mode 5
+
+_Fixes_
+- Fixed a bug causing Ton / Gram mining not to work on Cuda 11 drivers
+- Fixed a bug causing Ton / Gram mining to not work on newer AMD drivers
+
+
+
+### lolMiner 1.83
+
+_Changes_
+
+- Due to popular demand added back codes for mining TON / GRAM. Use -a TON or -a GRAM to mine it.
+- Ton / Gram pool connector now detects pools lolminer.ton.ninja and gram.hashrate.to correctly with --ton-mode 6 and https://ninja.tonlens.com with --ton-mode 4 (fixed in this build, did not work with old versions of the miner)
+ - Added Ton support for Nvidia ADA and AMD RDNA3 generation of GPUs
+
+
+
 ### lolMiner 1.82a
 
 _Changes_
@@ -156,6 +181,7 @@ _Fixes_
 - Fixed a bug causing too many rejected shares on Karlsen and Pyring when on unmineable pool. 
 - Fixed reading memory temperatures on AMD RTX 4000 cards 
 - Fixed a bug causing Beam mining to not work on AMD RX 5500 with 8G
+
 
 ### lolMiner 1.82
 
