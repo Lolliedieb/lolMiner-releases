@@ -1,6 +1,6 @@
 # lolMiner 
 ### AMD & Nvidia & Intel Miner for Etchash, Autolykos2, Beam, Grin, Ae, ALPH, Flux, Equihash, Kaspa, Nexa, Ironfish, Karlsen and Pyrin and more
-### Best Dual Miner for ALPH and IRON and KARLSEN and PYRIN and RADIANT with full Unlock LHR in all ALGOs
+### Best Dual Miner for ALPH and GRAM and KARLSEN and PYRIN and RADIANT with full Unlock LHR in all ALGOs
 
 A git repository for lolMiner release versions
 
@@ -27,7 +27,8 @@ A git repository for lolMiner release versions
 | Cuckaroo 29-40 | 1.0 |
 | Dual ETC + (KAS/ALEPH) | 1.0 / 0.0 |
 | Dual ETH (ETHW) + (KAS/ALEPH) | 1.0 / 0.0 |
-| Dual RTH + (ALEPH/IRON/KLS/PYI/RXD) | 1.0 / 0.75 - 1.0 |
+| Dual RTH + (ALEPH/GRAM/KLS/PYI/RXD) | 1.0 / 0.75 - 1.0 |
+| Dual IRON + (ALEPH/GRAM/KLS/PYI/RXD) | 1.0 / 0.75 - 1.0 |
 | Equihash 144/5 | 1.0 |     
 | Equihash 192/7 | 1.0 |
 | Equihash 210/9 | 1.0 |
