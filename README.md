@@ -33,7 +33,7 @@ A git repository for lolMiner release versions
 | Equihash 210/9 | 1.0 |
 | Etchash | 0.7 |
 | Ethash (ETHW) | 0.7 |
-| Ironfish | 0.75 |
+| Ironfish | 1.00 |
 | Kaspa | 0.75 |
 | Karlsen | 1.0 |
 | Nexa | 2.0 |
