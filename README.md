@@ -145,6 +145,45 @@ Parameter | Description
 |  --fan arg (=*)  | The % of the fan used for the GPUs. Cards are separated with a comma. "*" can be used to skip a card. |
 |  --no-oc-reset  |  To avoid reset the overclock settings applied when ending the miner |
 
+### lolMiner 1.86
+
+_Changes_
+- Added support for FishHash including dual mining codes. Use -a FISHHASH to mine it. Fork for Ironfish will be April 2nd, 2024
+- Significantly increased Ton / Gram mining performance on all supported AMD GPUs. 
+- Removed old Fishhash testing codes.
+- lolMiner will now accept --algo to be put in multiple times. The last occurrence will be the selected algorithm. 
+
+_Fixes_
+-  Fixed a bug causing high amount of pool rejected shares with AMD cards and Gram mining
+
+_Driver compatibility for Fishhash and Ton (Gram)_
+
+|  GPU Type        |  Driver           | Dual Mining Capabilities for Fishhash  |
+| ------------- |:-------------:| -----:|
+| AMD RX 400, 500      | 19.30+ | None |
+| AMD RX Vega / VII | 22.40+      |  None |
+| AMD RX 5000 | 20.40+      |    Aleph, Karlsen, Radiant, Ton/Gram |
+| AMD RX 6000 | 20.40+      |    Aleph, Karlsen, Pyrin, Radiant, Ton/Gram |
+| AMD RX 7000 | 22.40+      |    Aleph, Karlsen, Pyrin, Radiant, Ton/Gram |
+| Nvidia GTX 10 / 16 | Cuda 11   |    Aleph, Karlsen, Pyrin, Radiant, Ton/Gram |
+| Nvidia RTX 20 / 30 | Cuda 11   |    Aleph, Karlsen, Pyrin, Radiant, Ton/Gram |
+| Nvidia RTX 40 | Cuda 12   |    Aleph, Karlsen, Pyrin, Radiant, Ton/Gram |
+
+### lolMiner 1.85_beta
+
+_Changes_
+- Significantly improved Gram hashrate on AMD RX 5000 and higher cards by almost 10%
+- Added support for mining the Fishhash mainnet. New parameter -a FISHHASH. This will automatically use the new Ironfish stratum format that is mandatory after the fork. Supported GPUs: Nvidia GTX 1000 series and newer, AMD RX 5000 series and new. Supported dual mining options with Alephium (ALEPHDUAL), Gram (TONDUAL) and Radiant (RXDDUAL).
+- Removed old Fishhash testing codes.
+
+_Fixes_
+- Fixed a bug causing high amount of pool rejected shares with AMD cards and Gram mining
+
+_Missing features_
+- The dual mining codes of Fishhash and Ethash B3 with Karlsen and Pyrin can be buggy at the moment.
+- The Fishhash codes for AMD RX 400 / 500 and Vega generation cards are missing at the moment 
+- The Gram codes for Intel GPUs as well as AMD RX 400 / 500 and Vega and ADA generation cards are missing at the moment, for ADA please use previous version 1.84
+
 ### lolMiner 1.84
 
 _Changes_
