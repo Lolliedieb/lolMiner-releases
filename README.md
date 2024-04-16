@@ -146,6 +146,28 @@ Parameter | Description
 |  --fan arg (=*)  | The % of the fan used for the GPUs. Cards are separated with a comma. "*" can be used to skip a card. |
 |  --no-oc-reset  |  To avoid reset the overclock settings applied when ending the miner |
 
+### lolMiner 1.87
+
+_Changes_
+
+- Fishhash: Significantly improved speed on AMD RX 470 - RX 590 series of gpus (by 30%), significantly improved speed on Nvidia CMP 170HX (by 8-9%)
+- Fishhash: Implemented new DAG build procedure for Nvidia Turing and up gpus, that will build a valid DAG even on higher memory OC. This significantly reduces the number of defect shares  in this situation.
+- Pyrin: Improved Pyrin performance on Nvidia Turing and newer gpus by  about 2%
+- Ton / Gram: Improved performance on Nvidia Turing and newer gpus by about 1-2%
+- Improved performance of Fishhash + Pyrin dual mining on Nvidia Turing and newer gpus by about +10% on the Pyrin side
+- Improved performance of Fishhash + Alephium dual mining on Nvidia Ampere and newer gpus by about -2% speed on Fishhash side, but +10% on Alephium side with auto tune, about +5% on Alephium side at same Fishhash speed with manual tuning
+- Added experimental support for Fishash + Gram / Ton dual mining for AMD Vega and VII GPUs. Might require manual setting of dual tuning ratio.
+- The Ton job interface can now connect to pools or bridges using Ton mode 5 with http, so not enforcing https. 
+- Removed Blake3-Ironfish from visible algorithms. --algo IRONFISH will now redirect to FISHHASH. 
+
+_Fixes_
+- Fixed a bug causing the display of defect shares when mining Ton / Gram with very high difficulty
+- Fixed missing of Ton / Gram mining on AMD Tonga, AMD Fiji and RX 460 (Baffin) series of GPU. Was accidentally removed in a previous release.  
+
+_Known issues:_
+- CMP cards might crash or display faulty device statistics when trying to set offset or memory lock clock settings via lolMiner. Please use your operating system functions to do so. 
+
+
 ### lolMiner 1.86
 
 _Changes_
