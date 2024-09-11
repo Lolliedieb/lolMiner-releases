@@ -150,6 +150,17 @@ Parameter | Description
 
 _Changes_
 
+- Significantly improved performance of Gram / Chapa mining on Nvidia Turing and newer gpus. Turing cards gain approximately 15%, Amperes even up to 22%). **Note:** because the new kernel also uses more energy, the old kernel is still available as an option by adding parameter **--mode a**. The new kernel can be found via **--mode b** and is default.
+- Significantly improved performance of dual mining Fishhash + Gram / Chapa mining on Nvidia Turing and newer gpus. **Note:** because the new kernel also uses more energy, the old kernel is still available as an option by adding parameter **--mode a**. The new kernel can be found via **--mode b** and is default.
+
+_Fixes_
+- Fixed a hashrate degradation on RDNA3 gpus mining Gram / Chapa introduced in 1.86
+- Fixed a bug causing dual mining Fishhash and Gram / Chapa not to work on AMD Vega and VII gpus. Note: this still needs manual set **--dualfactor**.
+
+### lolMiner 1.87
+
+_Changes_
+
 - Fishhash: Significantly improved speed on AMD RX 470 - RX 590 series of gpus (by 30%), significantly improved speed on Nvidia CMP 170HX (by 8-9%)
 - Fishhash: Implemented new DAG build procedure for Nvidia Turing and up gpus, that will build a valid DAG even on higher memory OC. This significantly reduces the number of defect shares  in this situation.
 - Pyrin: Improved Pyrin performance on Nvidia Turing and newer gpus by  about 2%
