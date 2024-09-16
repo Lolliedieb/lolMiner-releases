@@ -148,6 +148,17 @@ Parameter | Description
 |  --fan arg (=*)  | The % of the fan used for the GPUs. Cards are separated with a comma. "*" can be used to skip a card. |
 |  --no-oc-reset  |  To avoid reset the overclock settings applied when ending the miner |
 
+### lolMiner 1.90
+
+_Changes_
+- Added support to mine Heavyhash-Pyrin V2 on Nvidia GTX 1000, AMD RX 5000 and newer gpus. Use -a PYRINV2 to select the algorithm, fee is 1%.
+- Added dual mining support for Autolykos V2 + Pyrin V2, Karlsen V2 + Pyrin V2 and Fishhash + Pyrin V2 for Nvidia GTX 1000 and newer and AMD RX 6000 and newer GPUs. Use --dualmode PYRINV2DUAL to add Pyrin V2 mining to the existing configs for the mentioned host algorithms. (1) (2)
+- Already in 1.89, but undocumented: slightly improved Gram performance on some GPUs.
+
+_Fixed_
+- Fixed a bug making Pyrin V1 non available on 1.89
+- Fixed a bug causing Nvidia GTX 1000 cards to crash on Fishhash dataset generation. 
+
 ### lolMiner 1.89
 
 _Changes_
