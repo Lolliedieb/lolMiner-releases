@@ -37,8 +37,10 @@ A git repository for lolMiner release versions
 | Ironfish | 1.00 |
 | Kaspa | 0.75 |
 | Karlsen | 1.0 |
+| KarlsenV2 | 1.0 |
 | Nexa | 2.0 |
 | Pyrin | 1.0 |
+| PyrinV2 | 1.0 |
 | Radiant | 0.75 |
 | Rethereum | 1.00 |
 | TON/GRAM | 1.00 |
@@ -146,7 +148,18 @@ Parameter | Description
 |  --fan arg (=*)  | The % of the fan used for the GPUs. Cards are separated with a comma. "*" can be used to skip a card. |
 |  --no-oc-reset  |  To avoid reset the overclock settings applied when ending the miner |
 
-### lolMiner 1.87
+### lolMiner 1.89
+
+_Changes_
+- Added support to mine Karlsenhash V2 on Nvidia Pascal and newer and AMD RX 5000 and newer. Use -a KARLSENV2 to mine it, fee is 1%.
+- Added support to dual mine Karlsen V2 and Autolykos V2 with Ton / Gram and similar. Use --dualmode TONDUAL for adding these dual options to the existing config.
+- Added support to mine BLOCX. BLOCX mining uses Autolykos V2 and can so be requested with -a AUTOLYKOS2 just as for Ergo mining. The different stratum of BLOCX is automatically detected and used when connected to a BLOCX pool.
+
+_Fixes_
+- Fixed issues mining Autolykos V2 (Ergo / BLOCX) for Nvidia Pascal and newer and AMD RX 5000 and newer gpus. 
+
+
+### lolMiner 1.88
 
 _Changes_
 
