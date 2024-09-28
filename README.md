@@ -148,6 +148,15 @@ Parameter | Description
 |  --fan arg (=*)  | The % of the fan used for the GPUs. Cards are separated with a comma. "*" can be used to skip a card. |
 |  --no-oc-reset  |  To avoid reset the overclock settings applied when ending the miner |
 
+### lolMiner 1.91
+
+_Changes_
+- Added support to mine Autolykos V2 (Ergo, BlocX) and KLS V2 on RX 400, RX 500, AMD Vega, VII and AMD MI 200 and MI 300 series. (1) (2)
+- Added Autolykos V2, Karlsenhash V2 and Fishhash dual mine capabilities with Gram / Ton for all above mentioned cards. AMD VII, MI 200 and 300 series additionally got PYRINV2 dual mine capacities.   A manual dualfactor setting might be needed in case the automatic tuning drops the factor to 0 or a too low value.
+- Improved performance of Fishhash on RX 400 and 500 series by about 3%.
+
+
+
 ### lolMiner 1.90
 
 _Changes_
