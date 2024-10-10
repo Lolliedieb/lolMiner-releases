@@ -1,0 +1,1 @@
+stop && wget https://github.com/Lolliedieb/lolMiner-releases/releases/download/1.88/lolMiner_v1.88_Lin64.tar.gz && tar -xvf lolMiner_v1.88_Lin64.tar.gz && cp -adpR 1.88/lolMiner /app-data/miners/lolminer-1.87 && start
