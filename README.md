@@ -39,6 +39,7 @@ A git repository for lolMiner release versions
 | Karlsen | 1.0 |
 | KarlsenV2 | 1.0 |
 | Nexa | 2.0 |
+| Octopus | 2.0 |
 | Pyrin | 1.0 |
 | PyrinV2 | 1.0 |
 | Radiant | 0.75 |
@@ -147,6 +148,15 @@ Parameter | Description
 |  --pl arg (=*)  | The power limit used for the GPUs. Cards are separated with a comma. "*" can be used to skip a card. |
 |  --fan arg (=*)  | The % of the fan used for the GPUs. Cards are separated with a comma. "*" can be used to skip a card. |
 |  --no-oc-reset  |  To avoid reset the overclock settings applied when ending the miner |
+
+### lolMiner 1.92
+
+_Changes_
+- Added support to mine **Conflux** (-a OCTOPUS) on **AMD GPUs** (Vega and newer). Fee is 2%. See tuning notes below
+
+_Fixes_
+- Fixed power readings of older AMD GPUs in Linux
+
 
 ### lolMiner 1.91
 
