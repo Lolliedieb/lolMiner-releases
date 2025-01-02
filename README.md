@@ -1,5 +1,5 @@
 # lolMiner 
-### AMD & Nvidia & Intel Miner for Etchash, Autolykos2, Beam, Grin, Ae, ALPH, Flux, Equihash, Kaspa, Nexa, Ironfish, Karlsen and Pyrin and more
+### AMD & Nvidia & Intel Miner for Etchash, Autolykos2, Beam, Grin, Ae, ALPH, Flux, Equihash, Kaspa, Nexa, Ironfish, Conflux, Karlsen and Pyrin and more
 ### Best Dual Miner for ALPH and GRAM and KARLSEN and PYRIN and RADIANT with full Unlock LHR in all ALGOs
 
 A git repository for lolMiner release versions
@@ -148,6 +148,18 @@ Parameter | Description
 |  --pl arg (=*)  | The power limit used for the GPUs. Cards are separated with a comma. "*" can be used to skip a card. |
 |  --fan arg (=*)  | The % of the fan used for the GPUs. Cards are separated with a comma. "*" can be used to skip a card. |
 |  --no-oc-reset  |  To avoid reset the overclock settings applied when ending the miner |
+
+### lolMiner 1.93
+
+_Changes_
+- Significantly improved core requirements and efficiency of AMD GPUs mining Conflux (-a OCTOPUS). Some core bound cards (e.g. all RX Vega, RX 5700 (XT), RX 6700XT) **gain up to 30%+ in speed** at same set clocks, other cards like 6900XT or 7900 series now allow for a significantly lower core clock to achieve peak performance and thus saving energy. 
+- Added support to mine Cortex for AMD RX 7000 series.
+
+_Notes_
+- 8G AMD cards are tested to work up to epoch 241 (about 5 further month) on Linux provided quite modern drivers. 12 and 16G cards will continue working beyond this point.  
+
+_Fixes_
+- Fixed a bug causing RX 6700 and 6600 to not start Cortex mining.
 
 ### lolMiner 1.92
 
