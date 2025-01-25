@@ -149,6 +149,17 @@ Parameter | Description
 |  --fan arg (=*)  | The % of the fan used for the GPUs. Cards are separated with a comma. "*" can be used to skip a card. |
 |  --no-oc-reset  |  To avoid reset the overclock settings applied when ending the miner |
 
+### lolMiner 1.94
+
+_Changes_
+
+- Added support to mine Conflux on Nvidia Cards. Use -a OCTOPUS to mine it, fee is 2% - similar to the AMD code.
+
+_Notes_
+- The detection of CMP cards is not optimal yet. If you want to mine Conflux on them, please add "--mode a" parameter manually to select an alternative kernel that works better on them compared with the default one. 
+- With regard to the performance of CMP cards: Stay tuned, we are working on further improvements :)  
+
+
 ### lolMiner 1.93
 
 _Changes_
