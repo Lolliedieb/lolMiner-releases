@@ -149,11 +149,15 @@ Parameter | Description
 |  --fan arg (=*)  | The % of the fan used for the GPUs. Cards are separated with a comma. "*" can be used to skip a card. |
 |  --no-oc-reset  |  To avoid reset the overclock settings applied when ending the miner |
 
-### lolMiner 1.94
+### lolMiner 1.94a
 
 _Changes_
 
 - Added support to mine Conflux on Nvidia Cards. Use -a OCTOPUS to mine it, fee is 2% - similar to the AMD code.
+
+_Fixes_
+- Fixed a bug causing Conflux mining to crash on some Nvidia GPUs (e.g. most Turing cards)
+- Fixed a bug causing Ethash / Etchash mining not to start on AMD RX 7600 (and other gfx1102 gpus)
 
 _Notes_
 - The detection of CMP cards is not optimal yet. If you want to mine Conflux on them, please add "--mode a" parameter manually to select an alternative kernel that works better on them compared with the default one. 
