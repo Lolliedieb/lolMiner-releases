@@ -44,6 +44,7 @@ A git repository for lolMiner release versions
 | PyrinV2 | 1.0 |
 | Radiant | 0.75 |
 | Rethereum | 1.00 |
+| Sha3X | 1.00 |
 | TON/GRAM | 1.00 |
 | ZelHash (Flux) | 1.0 / 1.5 |
 
@@ -148,6 +149,22 @@ Parameter | Description
 |  --pl arg (=*)  | The power limit used for the GPUs. Cards are separated with a comma. "*" can be used to skip a card. |
 |  --fan arg (=*)  | The % of the fan used for the GPUs. Cards are separated with a comma. "*" can be used to skip a card. |
 |  --no-oc-reset  |  To avoid reset the overclock settings applied when ending the miner |
+
+### lolMiner 1.96a
+
+_Changes_
+- Added support for Tari-Sha3x on Nvidia Pascal and newer and AMD RX 400 series and newer gpus. Use -a SHA3X to mine it. At the moment pool mining only. Fee is 1%.
+- Added support for Tari-Sha3x dual mining with Octopus (Conflux), Autolykos V2 (Ergo), Fishhash and Karlsenhash V2 algorithms. Use --dualmode SHA3XDUAL to activate it. Supported GPUs: Nvidia Pascal and newer and AMD RX 5000 series and newer.
+- Added support for mining AutolykosV2, BeamHash 3, Fishhash, KarlsenhashV2, Octopus and Sha3x on Radeon 9060 XT.  
+
+_Fixes_
+- Fixed a bug that causes the miner to crash when multiple failover pools were given but only one user entry for them.
+
+### lolMiner 1.95a
+
+_Changes_
+- Added support for continuous mining for Conflux on 8G Nvidia GPUs (some might want to call this zombie mode). This will enable these cards to mine on, despite running out of memory. Cards will slowly degrade in performance with growing DAG. See tuning notes below.
+- Added support for Nvidia RTX 5000 and AMD RX 9000 series on the following algorithms: AutolykosV2 (Ergo), BeamHashIII, Cuckatoo-32  (Grin, AMD only), Cuckoo-30 (Cortex, AMD only), Etchash, Ethash, Equihash 144/5 (via OpenCL), FishHash, Flux (aka ZelHash), KarlselhashV2, NexaPoW, Octopus (Conflux)
 
 ### lolMiner 1.94a
 
