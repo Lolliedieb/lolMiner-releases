@@ -23,8 +23,6 @@ A git repository for lolMiner release versions
 | Cuckaroo 30 CTXC | 2.5 |
 | Cuckatoo 31 | 2.0 |
 | Cuckatoo 32 | 2.0 |
-| Cuckaroo 29-32 | 1.0 |
-| Cuckaroo 29-40 | 1.0 |
 | Dual ETC + (KAS/ALEPH) | 1.0 / 0.0 |
 | Dual ETH (ETHW) + (KAS/ALEPH) | 1.0 / 0.0 |
 | Dual RTH + (ALEPH/GRAM//PYI/RXD) | 1.0 / 0.75 - 1.0 |
