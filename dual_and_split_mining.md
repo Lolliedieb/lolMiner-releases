@@ -1,4 +1,4 @@
-# lolMiner 1.20
+bs ya sidi
 
 ## Using the dual & splitting modes
 
